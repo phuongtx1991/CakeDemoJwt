@@ -1,0 +1,130 @@
+
+.detail-company {
+    border: 1px solid #44abb9;
+}
+
+div.detail-company dl dt {
+    line-height: 1.2em;
+    padding: 2%;
+}
+
+div.detail-company div div p {
+    margin-top: -2px;
+    margin-bottom: 1px;color: white;
+    font-size: 15px
+}
+
+div.detail-company dt {
+    width: 25%;
+    float: left;
+    border-top: 1px solid #44abb9;
+    font-size: 0.9em;
+    color: #44abb9;
+    font-weight: 400;
+}
+
+div.detail-company dl dd {
+    line-height: 1.2em;
+    padding: 2%;
+    margin-left: 25%;
+    border-left: 1px solid #44abb9;
+    border-top: 1px solid #44abb9;
+    font-size: 0.9em;
+    color: #70707A;
+}
+
+div.detail-company dl {
+    margin-bottom: 0px
+}
+
+.bg-color-title {
+    background-color:#44abb9;
+}
+
+.detail-min-height {
+    min-height: 43px
+}
+
+.padding-title-detail {
+    padding: 12px 0 5px 0;
+}
+
+.padding-title-intro {
+    padding: 12px 0 12px 0;
+}
+
+.active-icon {
+    text-align: right;
+    width: 10%;
+    padding: 11px 0 0 5px
+}
+.active-icon i {
+    font-size:20px;
+    color:white
+}
+
+.detail-title-icon {
+    text-align: center;
+    padding: 11px 0 0 5px;
+    margin-right: 8px
+}
+
+.abs-box {
+    color:#0cd10c;border: 1px solid #0cd10c;
+}
+
+.rec-fast-box {
+    color:#ff7f00;border: 1px solid #ff7f00;
+}
+
+.detail-title-icon i {
+    font-size:20px;
+    color:white
+}
+
+.deadline {
+    margin-left: 15px;color: red;
+}
+
+.job-status {
+    padding: 10px 10px 10px 10px;
+    border-radius: 64px;
+    font-size:10px;
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.text-align-justify {
+    text-align: justify;
+}
+
+.apply-button {
+    background: rgba(255,66,66,.85);
+    border-radius: 5px;
+    padding: 10px 0 10px 0;
+    margin-top: 30px;
+    margin-bottom: 20px
+}
+.apply-button a {
+    color: white;
+    width: 100%;
+    float: left;
+}
+
+.detail-job-form {
+    margin:0 -8px 0 -8px
+}
+
+.hiden-detail {
+    display: none;
+}

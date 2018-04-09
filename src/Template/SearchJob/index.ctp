@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/screen/forsearch.css"/>
+
 <div class="container">
     <div class="row">
         <form class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 job-form" 　name="form1" id='form1'
@@ -5,7 +7,7 @@
             <h3>Tìm kiếm công việc</h3>
 
             <input type="text" class="form-control white" placeholder="Nhập từ khóa" id="searchKeyword"
-                   value="<?= isset($searchKeyword)? $searchKeyword : "" ?>">
+                   value="<?= isset($searchKeyword)? $searchKeyword : '' ?>">
 
             <?=
                 $this->Form->select(
@@ -52,7 +54,7 @@
             ?>
 
             <div style="text-align: center;margin-top: -20px">
-                <input type="button" onclick="submitSearch();" class="btn dark-red" title="Tìm kiếm"
+                <input type="button" onclick="submitSearch();" class="btn dark-red btn-search" title="Tìm kiếm"
                        value="Tìm kiếm"
                        name="search"/>
             </div>
@@ -75,13 +77,13 @@
         <!-- logo -->
         <div class="col-xs-3 job-unit-height">
             <div class="logo-box">
-                <a href="https://www.facebook.com/hyperionjobvn/" target="_blank">
+                <a href="/jobDetail?job_id=<?= $item['product_id'] ?>" target="_self">
                     <img class="img-responsive job-logo" src="img/common_img/evolable_logo.png" alt="Facebook"/>
                 </a>
             </div>
         </div>
         <div class="col-xs-9 ">
-            <a href="https://www.facebook.com/hyperionjobvn/" target="_blank"
+            <a href="/jobDetail?job_id=<?= $item['product_id'] ?>" target="_self"
                title="<?= $item['main_list_comment_vn'] ?>">
                 <p class="font-design-lg job-title-text">
                     <b><?= $item['name_vn'] ?></b>
@@ -112,13 +114,13 @@
         <!-- logo -->
         <div class="col-xs-3 job-unit-height">
             <div class="logo-box">
-                <a href="https://www.facebook.com/hyperionjobvn/" target="_blank">
+                <a href="/jobDetail?job_id=<?= $item['product_id'] ?>" target="_self">
                     <img class="img-responsive job-logo" src="img/common_img/evolable_logo.png" alt="Facebook"/>
                 </a>
             </div>
         </div>
         <div class="col-xs-9 ">
-            <a href="https://www.facebook.com/hyperionjobvn/" target="_blank"
+            <a href="/jobDetail?job_id=<?= $item['product_id'] ?>" target="_self"
                title="<?= $item['main_list_comment_vn'] ?>">
                 <p class="font-design-lg job-title-text">
                     <b><?= $item['name_vn'] ?></b>
@@ -147,13 +149,13 @@
         <!-- logo -->
         <div class="col-xs-3 job-unit-height">
             <div class="logo-box">
-                <a href="https://www.facebook.com/hyperionjobvn/" target="_blank">
+                <a href="/jobDetail?job_id=<?= $item['product_id'] ?>" target="_self">
                     <img class="img-responsive job-logo" src="img/common_img/evolable_logo.png" alt="Facebook"/>
                 </a>
             </div>
         </div>
         <div class="col-xs-9 ">
-            <a href="https://www.facebook.com/hyperionjobvn/" target="_blank"
+            <a href="/jobDetail?job_id=<?= $item['product_id'] ?>" target="_self"
                title="<?= $item['main_list_comment_vn'] ?>">
                 <p class="font-design-lg job-title-text">
                     <b><?= $item['name_vn'] ?></b>
@@ -182,7 +184,7 @@
         var searchRegion = $('select[name=searchRegion]').val();
         var searchFrom = $('select[name=searchFrom]').val();
 
-        var url_action = '/test?search=1&' +
+        var url_action = '/searchjob?search=1&' +
             'searchKeyword=' + searchKeyword + "&" +
             'searchJobType=' + searchJobType + "&" +
             'searchJobCart=' + searchJobCart + "&" +

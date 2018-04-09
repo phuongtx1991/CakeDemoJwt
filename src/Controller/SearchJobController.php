@@ -12,7 +12,7 @@ use Cake\ORM\TableRegistry;
  *
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class TestController extends AppController
+class SearchJobController extends AppController
 {
 
     /**

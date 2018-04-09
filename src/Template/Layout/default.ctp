@@ -7,48 +7,56 @@ use Cake\Core\Configure;
     <title>出退勤入力（スマホ）</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/common/bootstrap.css"/>
+    <link rel="stylesheet"  href="css/font-awesome.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/common.css"/>
-    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js/Jscommon.js"></script>
+    <link rel="stylesheet" href="css/common/common.css"/>
+    <link href="css/bootstrap-toggle.css" rel="stylesheet">
+    <link href="css/common/util.css" rel="stylesheet">
 
+    <script type="text/javascript" src="js/common/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/common/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/common/Jscommon.js"></script>
+    <script src="js/common/bootstrap-toggle.js"></script>
 
+    <!--<?= $this->Html->meta('icon') ?>-->
+
+    <!--<?= $this->Html->css('base.css') ?>-->
+    <!--<?= $this->Html->css('cake.css') ?>-->
+
+    <!--<?= $this->fetch('meta') ?>-->
+    <!--<?= $this->fetch('css') ?>-->
+    <!--<?= $this->fetch('script') ?>-->
 
 </head>
 <body>
 
 <div class="container">
-    <nav id="navigation" class="navbar navbar-toggleable-md navbar-light bg-faded navbar-fixed-top navbar-inverse"
-         role="navigation">
-        <div class="container-fluid">
-            <div class="row row-0">
-                <div class="col-xs-12 col-lg-4 col-lg-offset-4">
-                    <div class="col-xs-6  col-lg-3 ">
-                        <li style="text-align: left;"><a href="/">
-                                <img src="img/common_img/HpJobLogo.png" style="height: 50px">
-                            </a></li>
-                    </div>
-                    <div class="col-xs-6 col-lg-3" col-xs-offset-2 col-lg-offset-2>
-                        <div class="col-xs-4 col-lg-4">
-                            <li style="text-align: right;height: 100%"><a href="#" class="fa fa-calendar"></a></li>
-                        </div>
-                        <div class="col-xs-4 col-lg-4">
-                            <li style="text-align: right;"><a href="#" class="glyphicon glyphicon-search"></a></li>
-                        </div>
-                        <div class="col-xs-4 col-lg-4">
-                            <li style="text-align: right;"><a href="#" class="glyphicon glyphicon-menu-hamburger"></a>
-                            </li>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+        <nav id="navigation" class="navbar navbar-fixed-top " role="">
+            <div class="logo">
+                <i >
+                    <img style="height: 42px" src="img/common_img/Hyperion.png"  />
+                </i>
+                <input type="checkbox" checked data-toggle="toggle" data-on="JP" data-off="VN" data-onstyle="success" data-offstyle="danger">
+
             </div>
-        </div>
-    </nav>
+            <div class="main-nav">
+                <a class="hamburger-nav"></a>
+                <ul class="menu" style="margin-top: 19px;">
+                    <a href="#home"><li><i class="fa fa-home"></i> Home</li></a>
+                    <a href="#portfolio"><li><i class="fa fa-file-image-o"></i> Portfolio</li></a>
+                    <a href="#about"><li><i class="fa fa-user"></i> About</li></a>
+                    <a href="#contact"><li><i class="fa fa-envelope"></i> Contact</li></a>
+                    <a href="#setting"><li><i class="fa fa-cogs"></i>Settings</li></a>
+                </ul>
+            </div>
+        </nav>
+    </div>
 </div>
 
+<!--<?= $this->Flash->render() ?>-->
 <?= $this->fetch('content') ?>
-
 
 <footer>
     <div class="container footer-container">
@@ -121,5 +129,6 @@ use Cake\Core\Configure;
         </div>
     </div>
 </footer>
+
 </body>
 </html>

@@ -1,3 +1,5 @@
+<link rel="stylesheet"  href="css/screen/for-job-details.css" />
+
 <div class="container">
     <div class="row detail-job-form">
         <div class="col-xs-12 detail-company pading-0 mgtop100">

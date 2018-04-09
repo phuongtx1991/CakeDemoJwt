@@ -465,11 +465,12 @@ class DtbProductsTable extends Table
                 $wheresArray['region'] = $dataSearch['searchRegion'];
             }
             $jobList = $this->find()
-                ->select(['name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn'])
+                ->select(['product_id','name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn'])
                 ->order(['product_id' => 'DESC'])
                 ->where($nameVN)
                 ->orWhere($nameJP)
                 ->andWhere( $wheresArray)
+                ->andWhere( ['del_flg' => 0])
                 ->hydrate(false)
                 ->toArray();
             return $jobList;
