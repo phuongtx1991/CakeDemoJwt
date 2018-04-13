@@ -12,6 +12,7 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
@@ -43,6 +44,7 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+//        $this->loadComponent('Auth');
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -50,5 +52,22 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+    }
+
+    /**
+     * Before filter callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     * @return void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        if (isset($this->request->query['lang'])) {
+            $this->request->session()->write('lang', $this->request->query['lang']);
+        } elseif(!$this->request->session()->check('lang')) {
+            $this->request->session()->write('lang', 'vn');
+        }
+        $this->set('lang', $this->request->session()->read('lang'));
     }
 }

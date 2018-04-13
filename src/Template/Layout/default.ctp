@@ -38,7 +38,7 @@ use Cake\Core\Configure;
                 <i >
                     <img style="height: 42px" src="img/common_img/Hyperion.png"  />
                 </i>
-                <input type="checkbox" checked data-toggle="toggle" data-on="JP" data-off="VN" data-onstyle="success" data-offstyle="danger">
+                    <input type="checkbox" id="lang-btn" <?php if($lang == 'vn'): ?>checked<?php endif; ?> data-toggle="toggle" data-on="JP" data-off="VN" data-onstyle="success" data-offstyle="danger">
 
             </div>
             <div class="main-nav">

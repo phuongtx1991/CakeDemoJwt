@@ -1,4 +1,4 @@
-<link rel="stylesheet"  href="css/screen/for-login.css" />
+<link rel="stylesheet" href="css/screen/for-login.css"/>
 
 <div class="limiter m-t-100" style="margin-top: 100px">
     <div class="container-login100">
@@ -8,28 +8,38 @@
                         Sign Up
                     </span>
 
+                <?php if(isset($error)): ?>
+                <div class="input-error m-b-16">
+                    <label class="m-b-0">
+                        <?= $error ?>
+                    </label>
+                </div>
+                <?php endif; ?>
+
                 <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter first name">
-                    <input class="input100" type="text" name="firstname" placeholder="First name">
+                    <input class="input100" type="text" name="name01" id="name01"
+                           value="<?= (isset($data['name01']))? $data['name01'] : ''; ?>" placeholder="First name">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter last name">
-                    <input class="input100" type="text" name="lastname" placeholder="Last name">
+                    <input class="input100" type="text" name="name02" id="name02" value="<?= (isset($data['name02']))? $data['name02'] : ''; ?>" placeholder="Last name">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter Email">
-                    <input class="input100" type="text" name="email" placeholder="Email">
+                    <input class="input100" type="text" name="email" id="email" placeholder="Email">
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16" data-validate = "Please enter password">
-                    <input class="input100" type="password" id="pass" name="pass" placeholder="Password">
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
+                    <input class="input100" type="password" id="pass" name="password" placeholder="Password">
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16" data-validate = "Please enter password confirm">
-                    <input class="input100" type="password" id="pass_confirm" name="pass_confirm" placeholder="Password confirm">
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password confirm">
+                    <input class="input100" type="password" id="pass_confirm" name="pass_confirm"
+                           placeholder="Password confirm">
                     <span class="focus-input100"></span>
                 </div>
 

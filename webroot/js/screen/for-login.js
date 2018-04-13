@@ -30,7 +30,7 @@
     });
 
     function validate (input) {
-        if($(input).attr('name') == 'email') {
+        if($(input).attr('id') == 'email') {
             if($(input).val().trim() == ''){
                 return 2;
             }
@@ -47,12 +47,12 @@
 
     function showValidate(input,validate_type) {
         var thisAlert = $(input).parent();
-        if(validate_type == 1 && $(input).attr('name') == 'email')
+        if(validate_type == 1 && $(input).attr('id') == 'email')
         {
             $(thisAlert).attr("data-validate", "nhap email chua dung chuan (vd: abc@xyz.com)");
         }
 
-        if(validate_type == 2 && $(input).attr('name') == 'email')
+        if(validate_type == 2 && $(input).attr('id') == 'email')
         {
             $(thisAlert).attr("data-validate", "Please enter Email");
         }

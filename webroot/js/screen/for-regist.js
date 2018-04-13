@@ -32,7 +32,7 @@
     });
 
     function validate (input) {
-        if($(input).attr('name') == 'email') {
+        if($(input).attr('id') == 'email') {
             if($(input).val().trim() == ''){
                 return 2;
             }
@@ -43,7 +43,7 @@
         else if($(input).val().trim() == ''){
             return 2;
         }
-        else if($(input).attr('name') == 'pass_confirm')
+        else if($(input).attr('id') == 'pass_confirm')
         {
             if($('#pass').val() != $('#pass_confirm').val())
             {
@@ -54,22 +54,22 @@
 
     function showValidate(input,validate_type) {
         var thisAlert = $(input).parent();
-        if(validate_type == 1 && $(input).attr('name') == 'email')
+        if(validate_type == 1 && $(input).attr('id') == 'email')
         {
             $(thisAlert).attr("data-validate", "nhap email chua dung chuan (vd: abc@xyz.com)");
         }
 
-        if(validate_type == 2 && $(input).attr('name') == 'email')
+        if(validate_type == 2 && $(input).attr('id') == 'email')
         {
             $(thisAlert).attr("data-validate", "Please enter Email");
         }
 
-        if(validate_type == 2 && $(input).attr('name') == 'pass_confirm')
+        if(validate_type == 2 && $(input).attr('id') == 'pass_confirm')
         {
             $(thisAlert).attr("data-validate", "Please enter pass confirm");
         }
 
-        if(validate_type == 3 && $(input).attr('name') == 'pass_confirm')
+        if(validate_type == 3 && $(input).attr('id') == 'pass_confirm')
         {
             $(thisAlert).attr("data-validate", "Passwords do not Match");
         }

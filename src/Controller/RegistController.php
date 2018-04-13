@@ -12,8 +12,11 @@ use Cake\ORM\TableRegistry;
  *
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class RegistController  extends AppController
+class RegistController extends AppController
 {
+
+    public $components = ['User'];
+
     /**
      * Index method
      *
@@ -21,10 +24,22 @@ class RegistController  extends AppController
      */
     public function index()
     {
-        if($this->request->is('post'))
-        {
-            debug($this->request->data);die;
+        if ($this->request->is('post')) {
+            $customerTbl = TableRegistry::get('DtbCustomer');
+            $data = $this->request->data;
+            $checkEmailExist = $customerTbl->isMatchEmail($data['email']);
+            if (!$checkEmailExist) {
+                $result = $this->User->insertUserData($this->request->data);
+                if ($result) {
+                    $this->redirect('/searchjob');
+                } else {
+                    debug("false");
+                    die;
+                }
+            } else {
+                $this->set('error', 'Địa chỉ email đã tồn tại. Nếu bạn đã có tài khoản, xin hãy vào trang đăng nhập.');
+                $this->set('data', $data);
+            }
         }
-
     }
 }

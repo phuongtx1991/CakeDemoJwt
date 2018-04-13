@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use Cake\Controller\Component\CookieComponent;
+
 
 /**
  * Users Controller
@@ -14,6 +16,7 @@ use Cake\ORM\TableRegistry;
  */
 class SearchJobController extends AppController
 {
+    public $components = ['User'];
 
     /**
      * Index method
@@ -22,10 +25,6 @@ class SearchJobController extends AppController
      */
     public function index()
     {
-//        debug($this->request->data);
-//        die;
-//        $rq = new Request();
-//        var_dump($rq->url("http://local.testcake.cakedemojwt.jp:8090/api/Cocktails.json"));die;
         $jobTbl = TableRegistry::get('DtbProducts');
         $jobCartTbl = TableRegistry::get('MtbCategory');
         $RegionTbl = TableRegistry::get('MtbRegion');
@@ -54,8 +53,19 @@ class SearchJobController extends AppController
             $jobSearchResult = $jobTbl->getSearchResult($this->request->query);
             $this->set('jobSearchResult', $jobSearchResult);
             $this->set('search', 1);
-            $this->set('searchKeyword',$this->request->query('searchKeyword'));
+            $this->set('searchKeyword', $this->request->query('searchKeyword'));
         }
 
     }
+
+//    public function jsonResponse($responseData = [], $responseStatusCode = 200) {
+//
+//        $this->response->type('json');
+//        debug("dsadsadsadsadsadasdsad");
+//        debug($this->request->data);
+//        $this->response->statusCode($responseStatusCode);
+//        $this->response->body(json_encode($responseData));
+//        $this->response->send();
+//        $this->render(false,false);
+//    }
 }
