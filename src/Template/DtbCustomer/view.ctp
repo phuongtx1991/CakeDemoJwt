@@ -29,28 +29,16 @@
             <td><?= $this->Number->format($dtbCustomer->pref) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Phone') ?></th>
+            <td><?= $this->Number->format($dtbCustomer->phone) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Sex') ?></th>
             <td><?= $this->Number->format($dtbCustomer->sex) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Job') ?></th>
-            <td><?= $this->Number->format($dtbCustomer->job) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Reminder') ?></th>
             <td><?= $this->Number->format($dtbCustomer->reminder) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Buy Times') ?></th>
-            <td><?= $this->Number->format($dtbCustomer->buy_times) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Buy Total') ?></th>
-            <td><?= $this->Number->format($dtbCustomer->buy_total) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Point') ?></th>
-            <td><?= $this->Number->format($dtbCustomer->point) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Status') ?></th>
@@ -59,10 +47,6 @@
         <tr>
             <th scope="row"><?= __('Del Flg') ?></th>
             <td><?= $this->Number->format($dtbCustomer->del_flg) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Mailmaga Flg') ?></th>
-            <td><?= $this->Number->format($dtbCustomer->mailmaga_flg) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Receive Work Info') ?></th>
@@ -97,16 +81,8 @@
             <td><?= $this->Number->format($dtbCustomer->jp_level) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Birth') ?></th>
-            <td><?= h($dtbCustomer->birth) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('First Buy Date') ?></th>
-            <td><?= h($dtbCustomer->first_buy_date) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Last Buy Date') ?></th>
-            <td><?= h($dtbCustomer->last_buy_date) ?></td>
+            <th scope="row"><?= __('Birth Day') ?></th>
+            <td><?= h($dtbCustomer->birth_day) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Create Date') ?></th>
@@ -134,20 +110,12 @@
         <?= $this->Text->autoParagraph(h($dtbCustomer->kana02)); ?>
     </div>
     <div class="row">
-        <h4><?= __('Company Name') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->company_name)); ?>
-    </div>
-    <div class="row">
         <h4><?= __('Zip01') ?></h4>
         <?= $this->Text->autoParagraph(h($dtbCustomer->zip01)); ?>
     </div>
     <div class="row">
         <h4><?= __('Zip02') ?></h4>
         <?= $this->Text->autoParagraph(h($dtbCustomer->zip02)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Zipcode') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->zipcode)); ?>
     </div>
     <div class="row">
         <h4><?= __('Addr01') ?></h4>
@@ -160,34 +128,6 @@
     <div class="row">
         <h4><?= __('Email') ?></h4>
         <?= $this->Text->autoParagraph(h($dtbCustomer->email)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Email Mobile') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->email_mobile)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Tel01') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->tel01)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Tel02') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->tel02)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Tel03') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->tel03)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Fax01') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->fax01)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Fax02') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->fax02)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Fax03') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->fax03)); ?>
     </div>
     <div class="row">
         <h4><?= __('Password') ?></h4>
@@ -204,18 +144,6 @@
     <div class="row">
         <h4><?= __('Secret Key') ?></h4>
         <?= $this->Text->autoParagraph(h($dtbCustomer->secret_key)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Note') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->note)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Mobile Phone Id') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->mobile_phone_id)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Tel') ?></h4>
-        <?= $this->Text->autoParagraph(h($dtbCustomer->tel)); ?>
     </div>
     <div class="row">
         <h4><?= __('Image') ?></h4>

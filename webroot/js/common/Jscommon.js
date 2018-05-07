@@ -74,6 +74,5 @@ function addLanguageStr(link, language) {
     {
         result = link + '?' + 'lang=' + language;
     }
-
     return result;
 }

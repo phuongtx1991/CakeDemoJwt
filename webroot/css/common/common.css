@@ -9,7 +9,7 @@ body {
 /* line 7, C:/Users/Shubham/Desktop/test/sass/app.sass */
 .navbar {
   /*background-image: #2c3e50;*/
-  background-image: url("../../img/common_img/wood_background.jpg");
+  background-image: url("../../img/common_img/background/wood_background.jpg");
   z-index: 1000;
 }
 
@@ -95,7 +95,6 @@ body {
 
 .footer-main-logo img {
     width: 60%;
-    height: 60%;
 }
 
 .footer-contact {

@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
-use Cake\Controller\Component\CookieComponent;
+use Cake\Core\Configure;
+use Cake\Event\Event;
 
 
 /**
@@ -16,7 +17,8 @@ use Cake\Controller\Component\CookieComponent;
  */
 class SearchJobController extends AppController
 {
-    public $components = ['User'];
+    public $components = ['User', 'Common'];
+
 
     /**
      * Index method
@@ -28,24 +30,26 @@ class SearchJobController extends AppController
         $jobTbl = TableRegistry::get('DtbProducts');
         $jobCartTbl = TableRegistry::get('MtbCategory');
         $RegionTbl = TableRegistry::get('MtbRegion');
+        $langguage = $this->request->session()->read('lang') == 'vn' ? '_vn' : '';
+        $this->set('textLang', $langguage);
 
-        $jobFastShow = $jobTbl->getFiveJobFastRecruit();
+        $jobFastShow = $jobTbl->getFiveJobFollowStatus(2);
         $this->set('jobFast', $jobFastShow);
 
-        $jobAbsShow = $jobTbl->getFiveJobAbsorbation();
+        $jobAbsShow = $jobTbl->getFiveJobFollowStatus(1);
         $this->set('jobAbs', $jobAbsShow);
 
         $jobCart = $jobCartTbl->getAllCartegoryJob();
         $jobCartArray = array();
         foreach ($jobCart as $jobItem) {
-            $jobCartArray += array($jobItem['id'] => $jobItem['name_vn']);
+            $jobCartArray += array($jobItem['id'] => $jobItem['name'.$langguage]);
         }
         $this->set('jobCartArray', $jobCartArray);
 
         $Region = $RegionTbl->getAllRegion();
         $RegionArray = array();
         foreach ($Region as $RjItem) {
-            $RegionArray += array($RjItem['id'] => $RjItem['name_vn']);
+            $RegionArray += array($RjItem['id'] => $RjItem['name'.$langguage]);
         }
         $this->set('RegionArray', $RegionArray);
 

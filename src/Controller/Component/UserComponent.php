@@ -30,7 +30,7 @@ class UserComponent extends Component
         return false;
     }
 
-    public function insertUserData($data)
+    public function registUser($data)
     {
         $customerTbl = TableRegistry::get('DtbCustomer');
 
@@ -49,10 +49,10 @@ class UserComponent extends Component
         //encode password
         $data['password'] = $this->Utils->getHashString($data['password'], $salt);
         unset($data['pass_confirm']);
-        return $this->updateUserData($data);
+        return $this->insertUserData($data);
     }
 
-    public function updateUserData($data)
+    private function insertUserData($data)
     {
         $result = false;
         try {
@@ -71,4 +71,48 @@ class UserComponent extends Component
         }
         return $result;
     }
+
+    public function updateUserData($data)
+    {
+        $customerTbl = TableRegistry::get('DtbCustomer');
+        $userData = $customerTbl->newEntity();
+        $entity = $customerTbl->get($data['customer_id']);
+
+        $data['birth_day'] = $data['birth_day']['year'].'-'.$data['birth_day']['month'].'-'.$data['birth_day']['day'];
+        $data['desired_work'] =  implode(" ",$data['desired_work']);
+        $data['desired_position'] =  implode(" ",$data['desired_position']);
+        $data['desired_region'] =  implode(" ",$data['desired_region']);
+//        $data['update_date'] =  date();
+
+        // convert arraay experion for update
+        $expInport = array();
+        foreach ($data as $key => $item )
+        {
+            $findme = 'project_';
+            $pos = strpos($key, $findme);
+            if($pos !== false)
+            {
+                $expInport[$key] = $item;
+                unset($data[$key]);
+            }else{
+                $userData->{$key} = $item;
+            }
+        }
+        try {
+        //transaction
+        $customerTbl->connection()->transactional(function () use ($customerTbl, $userData) {
+            $customerTbl->save($userData, ['atomic' => false]);
+        });
+        } catch (Exception $e) {
+            $result = false;
+        }
+        return true;
+
+    }
+
+    private function updateExpData()
+    {
+
+    }
+
 }

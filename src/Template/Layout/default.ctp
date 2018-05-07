@@ -35,8 +35,8 @@ use Cake\Core\Configure;
     <div class="row">
         <nav id="navigation" class="navbar navbar-fixed-top " role="">
             <div class="logo">
-                <i >
-                    <img style="height: 42px" src="img/common_img/Hyperion.png"  />
+                <i>
+                    <a href="/"><img style="height: 42px;margin-top: 5px" src="img/common_img/icon/Hyperion.png"  /></a>
                 </i>
                     <input type="checkbox" id="lang-btn" <?php if($lang == 'vn'): ?>checked<?php endif; ?> data-toggle="toggle" data-on="JP" data-off="VN" data-onstyle="success" data-offstyle="danger">
 
@@ -44,11 +44,11 @@ use Cake\Core\Configure;
             <div class="main-nav">
                 <a class="hamburger-nav"></a>
                 <ul class="menu" style="margin-top: 19px;">
-                    <a href="#home"><li><i class="fa fa-home"></i> Home</li></a>
-                    <a href="#portfolio"><li><i class="fa fa-file-image-o"></i> Portfolio</li></a>
-                    <a href="#about"><li><i class="fa fa-user"></i> About</li></a>
-                    <a href="#contact"><li><i class="fa fa-envelope"></i> Contact</li></a>
-                    <a href="#setting"><li><i class="fa fa-cogs"></i>Settings</li></a>
+                    <!--<a href="#home"><li><i class="fa fa-home"></i> Home</li></a>-->
+                    <a href="/regist"><li><i class="fa fa-file-image-o"></i>&nbsp;<?= Configure::read('Common.regist.'.$lang) ?></li></a>
+                    <a href="#about"><li><i class="fa fa-user"></i>&nbsp;<?= Configure::read('Common.about_us.'.$lang) ?></li></a>
+                    <a href="#contact"><li><i class="fa fa-envelope"></i>&nbsp;<?= Configure::read('Common.contact.'.$lang) ?></li></a>
+                    <a href="/login"><li><i class="fa fa-cogs"></i>&nbsp;<?= Configure::read('Common.login.'.$lang) ?></li></a>
                 </ul>
             </div>
         </nav>
@@ -63,62 +63,61 @@ use Cake\Core\Configure;
         <div class="row">
             <div class="col-xs-12">
                 <li class="footer-main-logo">
-                    <img src="img/common_img/HyperionLogo.png">
+                    <img src="img/common_img/logo/HyperionLogo.png">
                 </li>
             </div>
             <div class="col-xs-12 footer-contact">
                 <p class="font-design-lg footer-contact-place-title">
-                    <b>Địa chỉ</b>
-                    <img src="img/common_img/icon_place.png" alt=""/>
+                    <b><?= Configure::read('Common.address.'.$lang) ?></b>
+                    <img src="img/common_img/icon/icon_place.png" alt=""/>
                 </p>
-                <img class="img-responsive" src="img/common_img/dotted-line-white-med.png" alt=""/>
-                <p class="footer-contact-place-detail lead">Phòng 319, tầng 3, tòa nhà UDIC Complex Hoàng Đạo Thúy,
-                    phường Trung Hòa, quận Cầu Giấy, thành phố Hà Nội.</p>
+                <img class="img-responsive" src="img/common_img/icon/dotted-line-white-med.png" alt=""/>
+                <p class="footer-contact-place-detail lead"><?= Configure::read('Common.address_info.'.$lang) ?></p>
                 <p class="font-design-lg contact-title-color">
-                    <b>Kết nối với chúng tôi</b>
-                    <img src="img/common_img/connect_icon.png" alt=""/>
+                    <b><?= Configure::read('Common.connect.'.$lang) ?></b>
+                    <img src="img/common_img/icon/connect_icon.png" alt=""/>
                 </p>
-                <img class="img-responsive" src="img/common_img/dotted-line-white-med.png" alt=""/>
+                <img class="img-responsive" src="img/common_img/icon/dotted-line-white-med.png" alt=""/>
 
             </div>
             <div class="col-xs-12 ol-xs-offset-1 footer-contact-icon">
                 <a href="https://www.facebook.com/hyperionjobvn/" target="_blank">
-                    <img src="img/common_img/facebook_icon.png" alt="Facebook"/>
+                    <img src="img/common_img/icon/facebook_icon.png" alt="Facebook"/>
                 </a>
                 <a href="https://www.facebook.com/hyperionjobvn/" target="_blank">
-                    <img src="img/common_img/yotube_icon.png" alt="Facebook"/>
+                    <img src="img/common_img/icon/yotube_icon.png" alt="Facebook"/>
                 </a>
                 <a href="https://www.facebook.com/hyperionjobvn/" target="_blank">
-                    <img src="img/common_img/twitter_icon.png" alt="Facebook"/>
+                    <img src="img/common_img/icon/twitter_icon.png" alt="Facebook"/>
                 </a>
                 <a href="https://www.facebook.com/hyperionjobvn/" target="_blank">
-                    <img src="img/common_img/linkedin_icon.png" alt="Facebook"/>
+                    <img src="img/common_img/icon/linkedin_icon.png" alt="Facebook"/>
                 </a>
             </div>
             <div class="col-xs-12 footer-contact-icon">
                 <i>
-                    <img src="img/common_img/tel_full.png" alt="Facebook"/>
+                    <img src="img/common_img/icon/tel_full.png" alt="Facebook"/>
                 </i>
             </div>
             <div class="col-xs-12 footer-contact-icon">
                 <i>
-                    <img src="img/common_img/mail_full.png" alt="Facebook"/>
+                    <img src="img/common_img/icon/mail_full.png" alt="Facebook"/>
                 </i>
             </div>
             <div class="col-xs-12 col-xs-offset-1 footer-contact-relation">
                 <div class="col-xs-6  ">
                     <a href="https://pharmapremium.jp/" target="_blank">
-                        <img class="img-responsive" src="img/common_img/logo-pharmapremium.png" alt="Pharma premium"/>
+                        <img class="img-responsive" src="img/common_img/logo/logo-pharmapremium.png" alt="Pharma premium"/>
                     </a>
                 </div>
                 <div class="col-xs-6  ">
                     <a href="https://matebank.jp/" target="_blank">
-                        <img class="img-responsive" src="img/common_img/logo-matebank.png" alt="Matebank"/>
+                        <img class="img-responsive" src="img/common_img/logo/logo-matebank.png" alt="Matebank"/>
                     </a>
                 </div>
                 <div class="col-xs-6 col-xs-offset-3 footer-contact-relation-logo">
                     <a href="http://www.hyperion-job.jp/" target="_blank">
-                        <img class="img-responsive" src="img/common_img/logo-hyperionjob.png" alt="Hyperion job"/>
+                        <img class="img-responsive" src="img/common_img/logo/logo-hyperionjob.png" alt="Hyperion job"/>
                     </a>
                 </div>
             </div>

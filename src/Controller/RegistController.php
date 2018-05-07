@@ -29,7 +29,7 @@ class RegistController extends AppController
             $data = $this->request->data;
             $checkEmailExist = $customerTbl->isMatchEmail($data['email']);
             if (!$checkEmailExist) {
-                $result = $this->User->insertUserData($this->request->data);
+                $result = $this->User->registUser($this->request->data);
                 if ($result) {
                     $this->redirect('/searchjob');
                 } else {

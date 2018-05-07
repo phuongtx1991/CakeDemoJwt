@@ -18,20 +18,14 @@
                 <th scope="col"><?= $this->Paginator->sort('customer_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('country_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('pref') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('sex') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('job') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('birth') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('birth_day') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('reminder') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('first_buy_date') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('last_buy_date') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('buy_times') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('buy_total') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('point') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('status') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('create_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('update_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('del_flg') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('mailmaga_flg') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('receive_work_info') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('marital_status') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('current_address') ?></th>
@@ -49,20 +43,14 @@
                 <td><?= $this->Number->format($dtbCustomer->customer_id) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->country_id) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->pref) ?></td>
+                <td><?= $this->Number->format($dtbCustomer->phone) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->sex) ?></td>
-                <td><?= $this->Number->format($dtbCustomer->job) ?></td>
-                <td><?= h($dtbCustomer->birth) ?></td>
+                <td><?= h($dtbCustomer->birth_day) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->reminder) ?></td>
-                <td><?= h($dtbCustomer->first_buy_date) ?></td>
-                <td><?= h($dtbCustomer->last_buy_date) ?></td>
-                <td><?= $this->Number->format($dtbCustomer->buy_times) ?></td>
-                <td><?= $this->Number->format($dtbCustomer->buy_total) ?></td>
-                <td><?= $this->Number->format($dtbCustomer->point) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->status) ?></td>
                 <td><?= h($dtbCustomer->create_date) ?></td>
                 <td><?= h($dtbCustomer->update_date) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->del_flg) ?></td>
-                <td><?= $this->Number->format($dtbCustomer->mailmaga_flg) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->receive_work_info) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->marital_status) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->current_address) ?></td>

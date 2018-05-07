@@ -2983,7 +2983,16 @@
 	bottom: 0px;
 }
 
+.height-120{height: 120px}
 
+.textarea-ver-fix{
+    resize: vertical;
+}
+
+
+.border-radius-4 {
+    border-radius: 4px !important;
+}
 
 
 

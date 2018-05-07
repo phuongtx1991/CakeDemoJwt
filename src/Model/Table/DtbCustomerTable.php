@@ -11,7 +11,6 @@ use Cake\Validation\Validator;
  * DtbCustomer Model
  *
  * @property \App\Model\Table\CountriesTable|\Cake\ORM\Association\BelongsTo $Countries
- * @property \App\Model\Table\MobilePhonesTable|\Cake\ORM\Association\BelongsTo $MobilePhones
  *
  * @method \App\Model\Entity\DtbCustomer get($primaryKey, $options = [])
  * @method \App\Model\Entity\DtbCustomer newEntity($data = null, array $options = [])
@@ -40,9 +39,6 @@ class DtbCustomerTable extends Table
 
         $this->belongsTo('Countries', [
             'foreignKey' => 'country_id'
-        ]);
-        $this->belongsTo('MobilePhones', [
-            'foreignKey' => 'mobile_phone_id'
         ]);
     }
 
@@ -77,20 +73,12 @@ class DtbCustomerTable extends Table
             ->allowEmpty('kana02');
 
         $validator
-            ->scalar('company_name')
-            ->allowEmpty('company_name');
-
-        $validator
             ->scalar('zip01')
             ->allowEmpty('zip01');
 
         $validator
             ->scalar('zip02')
             ->allowEmpty('zip02');
-
-        $validator
-            ->scalar('zipcode')
-            ->allowEmpty('zipcode');
 
         $validator
             ->allowEmpty('pref');
@@ -109,42 +97,15 @@ class DtbCustomerTable extends Table
             ->notEmpty('email');
 
         $validator
-            ->scalar('email_mobile')
-            ->allowEmpty('email_mobile');
-
-        $validator
-            ->scalar('tel01')
-            ->allowEmpty('tel01');
-
-        $validator
-            ->scalar('tel02')
-            ->allowEmpty('tel02');
-
-        $validator
-            ->scalar('tel03')
-            ->allowEmpty('tel03');
-
-        $validator
-            ->scalar('fax01')
-            ->allowEmpty('fax01');
-
-        $validator
-            ->scalar('fax02')
-            ->allowEmpty('fax02');
-
-        $validator
-            ->scalar('fax03')
-            ->allowEmpty('fax03');
+            ->requirePresence('phone', 'create')
+            ->notEmpty('phone');
 
         $validator
             ->allowEmpty('sex');
 
         $validator
-            ->allowEmpty('job');
-
-        $validator
-            ->dateTime('birth')
-            ->allowEmpty('birth');
+            ->date('birth_day')
+            ->allowEmpty('birth_day');
 
         $validator
             ->scalar('password')
@@ -168,31 +129,6 @@ class DtbCustomerTable extends Table
             ->add('secret_key', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 
         $validator
-            ->dateTime('first_buy_date')
-            ->allowEmpty('first_buy_date');
-
-        $validator
-            ->dateTime('last_buy_date')
-            ->allowEmpty('last_buy_date');
-
-        $validator
-            ->decimal('buy_times')
-            ->allowEmpty('buy_times');
-
-        $validator
-            ->decimal('buy_total')
-            ->allowEmpty('buy_total');
-
-        $validator
-            ->decimal('point')
-            ->requirePresence('point', 'create')
-            ->notEmpty('point');
-
-        $validator
-            ->scalar('note')
-            ->allowEmpty('note');
-
-        $validator
             ->requirePresence('status', 'create')
             ->notEmpty('status');
 
@@ -209,13 +145,6 @@ class DtbCustomerTable extends Table
         $validator
             ->requirePresence('del_flg', 'create')
             ->notEmpty('del_flg');
-
-        $validator
-            ->allowEmpty('mailmaga_flg');
-
-        $validator
-            ->scalar('tel')
-            ->allowEmpty('tel');
 
         $validator
             ->allowEmpty('receive_work_info');
@@ -368,7 +297,21 @@ class DtbCustomerTable extends Table
     {
         try {
             $result = $this->find()
-                ->select(['name01', 'name02','email','customer_id'])
+                ->select(['name01', 'name02', 'email', 'customer_id'])
+                ->where(['customer_id' => $customer_id])
+                ->hydrate(false)
+                ->first();
+            return $result;
+        } catch (Exception $e) {
+            return false;
+            throw $e;
+        }
+    }
+
+    public function getCustumerInfoById($customer_id)
+    {
+        try {
+            $result = $this->find()
                 ->where(['customer_id' => $customer_id])
                 ->hydrate(false)
                 ->first();
@@ -391,7 +334,6 @@ class DtbCustomerTable extends Table
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->isUnique(['secret_key']));
 //        $rules->add($rules->existsIn(['country_id'], 'Countries'));
-//        $rules->add($rules->existsIn(['mobile_phone_id'], 'MobilePhones'));
 
         return $rules;
     }

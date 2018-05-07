@@ -68,6 +68,8 @@ use Cake\Utility\Security;
 try {
     Configure::config('default', new PhpConfig());
     Configure::load('app', 'default', false);
+    Configure::load('Language' . DS . 'language_list', 'default', true);
+    Configure::load('common_setting', 'default', true);
 } catch (\Exception $e) {
     exit($e->getMessage() . "\n");
 }

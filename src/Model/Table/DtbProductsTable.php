@@ -372,38 +372,16 @@ class DtbProductsTable extends Table
 
     /**
      * get the list five first job
-     *
+     * $status = 1 : 人気(hấp dẫn), 2 : 急募(tuyển gấp)
      * @return array
      */
-    public function getFiveJobFastRecruit()
+    public function getFiveJobFollowStatus($status)
     {
         try {
             // 他Model情報取得
-            //get information 5 picture of an album
             $jobList = $this->find()
                 ->order(['product_id' => 'DESC'])
-                ->where(['del_flg' => 0, 'target' => 1])
-                ->limit(5)
-                ->toArray();
-            return $jobList;
-        } catch (Exception $e) {
-            throw $e;
-        }
-    }
-
-    /**
-     * get the list five first job
-     *
-     * @return array
-     */
-    public function getFiveJobAbsorbation()
-    {
-        try {
-            // 他Model情報取得
-            //get information 5 picture of an album
-            $jobList = $this->find()
-                ->order(['product_id' => 'DESC'])
-                ->where(['del_flg' => 0, 'target' => 2])
+                ->where(['del_flg' => 0, 'status' => $status])
                 ->limit(5)
                 ->toArray();
             return $jobList;
@@ -422,6 +400,7 @@ class DtbProductsTable extends Table
     {
         try {
             $jobList = $this->find()
+//                ->select(['product_id','name','name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn','employment_status'])
                 ->where(['product_id' => $id,'del_flg' => 0])
                 ->hydrate(false)
                 ->first();
@@ -465,7 +444,7 @@ class DtbProductsTable extends Table
                 $wheresArray['region'] = $dataSearch['searchRegion'];
             }
             $jobList = $this->find()
-                ->select(['product_id','name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn'])
+                ->select(['product_id','name','name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn'])
                 ->order(['product_id' => 'DESC'])
                 ->where($nameVN)
                 ->orWhere($nameJP)

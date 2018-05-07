@@ -84,6 +84,46 @@ class DtbCustomerTableTest extends TestCase
     }
 
     /**
+     * Test isMatchEmail method
+     *
+     * @return void
+     */
+    public function testIsMatchEmail()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getPasswordInfo method
+     *
+     * @return void
+     */
+    public function testGetPasswordInfo()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getBasicInfoCustumer method
+     *
+     * @return void
+     */
+    public function testGetBasicInfoCustumer()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getCustumerInfoById method
+     *
+     * @return void
+     */
+    public function testGetCustumerInfoById()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
      * Test buildRules method
      *
      * @return void

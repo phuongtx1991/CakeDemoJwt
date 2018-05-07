@@ -32,10 +32,12 @@ class JobInfoComponent extends Component
         ];
 
         $infoRecArray = $jobTbl->getJobInfoById($id);
+//        debug($infoRecArray);die;
         //job description
         $infoRecArray['client_introduction_vn'] = ($infoRecArray['employment_status'] == 1) ? $infoRecArray['client_introduction_vn'] : '';
         //loai cong viecemployment_status
         $infoRecArray['employment_status'] = $empStatusTbl->getEmployStatusById($infoRecArray['employment_status'])['name_vn'];
+
         //regiton
         $infoRecArray['region'] = $regionTbl->getRegionById($infoRecArray['region'])['name_vn'];
         //city

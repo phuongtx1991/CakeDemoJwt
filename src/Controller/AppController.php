@@ -17,6 +17,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Routing\Router;
 
 /**
  * Application Controller
@@ -44,7 +45,7 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-//        $this->loadComponent('Auth');
+        $this->loadComponent('Common');
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -69,5 +70,11 @@ class AppController extends Controller
             $this->request->session()->write('lang', 'vn');
         }
         $this->set('lang', $this->request->session()->read('lang'));
+
+        $controller = Router::getRequest()->params['controller'];
+        $controller= strtolower($controller);
+        $this->set($controller,$this->Common->textForView($controller) );
+
+        $this->set('customerId',1002);
     }
 }
