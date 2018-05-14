@@ -5,7 +5,7 @@
         <div class="wrap-login100">
             <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="post">
                     <span class="login100-form-title">
-                        Sign Up
+                        <?= $regist['label_sign_up'] ?>
                     </span>
 
                 <?php if(isset($error)): ?>
@@ -16,49 +16,53 @@
                 </div>
                 <?php endif; ?>
 
-                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter first name">
+                <div class="wrap-input100 validate-input m-b-16" data-validate="<?= $regist['validate_name01_empty'] ?>">
                     <input class="input100" type="text" name="name01" id="name01"
-                           value="<?= (isset($data['name01']))? $data['name01'] : ''; ?>" placeholder="First name">
+                           value="<?= (isset($data['name01']))? $data['name01'] : ''; ?>" placeholder="<?= $regist['placeholder_name01'] ?>">
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter last name">
-                    <input class="input100" type="text" name="name02" id="name02" value="<?= (isset($data['name02']))? $data['name02'] : ''; ?>" placeholder="Last name">
+                <div class="wrap-input100 validate-input m-b-16" data-validate="<?= $regist['validate_name02_empty'] ?>">
+                    <input class="input100" type="text" name="name02" id="name02" value="<?= (isset($data['name02']))? $data['name02'] : ''; ?>" placeholder="<?= $regist['placeholder_name02'] ?>">
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter Email">
-                    <input class="input100" type="text" name="email" id="email" placeholder="Email">
+                <div class="wrap-input100 validate-input m-b-16" data-validate="">
+                    <input class="input100" type="text" name="email" id="email" placeholder="<?= $regist['placeholder_email'] ?>">
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
-                    <input class="input100" type="password" id="pass" name="password" placeholder="Password">
+                <div class="wrap-input100 validate-input m-b-16" data-validate="<?= $regist['validate_password_empty'] ?>">
+                    <input class="input100" type="password" id="pass" name="password" placeholder="<?= $regist['placeholder_password'] ?>">
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password confirm">
+                <div class="wrap-input100 validate-input m-b-16" data-validate="">
                     <input class="input100" type="password" id="pass_confirm" name="pass_confirm"
-                           placeholder="Password confirm">
+                           placeholder="<?= $regist['placeholder_password_confirm'] ?>">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
-                        Sign up
+                        <?= $regist['label_sign_up_text'] ?>
                     </button>
                 </div>
 
                 <div class="flex-col-c p-t-170 p-b-40">
                         <span class="txt1 p-b-9">
-                            Do you have an account?
+                            <?= $regist['label_have_acc'] ?>
                         </span>
 
                     <a href="#" class="txt3">
-                        Sign in
+                        <?= $regist['label_login'] ?>
                     </a>
                 </div>
             </form>
+            <input hidden id="validate_email_empty" value="<?= $regist['validate_email_empty'] ?>">
+            <input hidden id="validate_password_confirm_empty" value="<?= $regist['validate_password_confirm_empty'] ?>">
+            <input hidden id="validate_email_wrong" value="<?= $regist['validate_email_wrong'] ?>">
+            <input hidden id="validate_password_wrong_compare" value="<?= $regist['validate_password_wrong_compare'] ?>">
         </div>
     </div>
 </div>

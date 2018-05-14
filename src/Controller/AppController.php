@@ -66,15 +66,16 @@ class AppController extends Controller
         parent::beforeFilter($event);
         if (isset($this->request->query['lang'])) {
             $this->request->session()->write('lang', $this->request->query['lang']);
-        } elseif(!$this->request->session()->check('lang')) {
+        } elseif (!$this->request->session()->check('lang')) {
             $this->request->session()->write('lang', 'vn');
         }
         $this->set('lang', $this->request->session()->read('lang'));
-
+        $textLangCommon = $this->request->session()->read('lang') == 'vn' ? '_vn' : '';
+        $this->set('textLangCommon', $textLangCommon);
         $controller = Router::getRequest()->params['controller'];
-        $controller= strtolower($controller);
-        $this->set($controller,$this->Common->textForView($controller) );
+        $controller = strtolower($controller);
+        $this->set($controller, $this->Common->textForView($controller));
 
-        $this->set('customerId',1002);
+        $this->set('customerId', 1002);
     }
 }

@@ -25,6 +25,8 @@ class JobDetailController extends AppController
     public function index()
     {
         $jobId = $this->request->query('job_id');
-        $this->set('JobInfo',$this->JobInfo->getDataJobDetail($jobId));
+        $lang = $this->request->session()->read('lang');
+        $textLang = $lang == 'vn' ? '_vn' : '';
+        $this->set('JobInfo', $this->JobInfo->getDataJobDetail($jobId, $textLang, $lang));
     }
 }

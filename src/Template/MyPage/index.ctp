@@ -11,15 +11,14 @@
                                 <img src="img/avatar/avatar_1000.jpg" alt="" class="bo-cir height-120">
                             </div>
                             <div class="col-md-12 col-sm-12">
-                                <a href="/updateuserinfo" class="btn btn-danger">Cập nhật hồ sơ</a>
-
+                                <a href="/updateuserinfo" class="btn btn-danger"><?= $mypage['label_update_cv'] ?></a>
                             </div>
                         </div>
                         <div class="col-md-8 col-sm-8">
                             <h2 class="card-title-fix text-center m-t-15"><?= $customInfo['name02'] ?> <?= $customInfo['name01'] ?></h2>
-                            <p class="card-text-fix"><strong>Profile: </strong> Web Developer </p>
-                            <p class="card-text-fix"><strong>Skills: </strong> Theme, plugin and website development </p>
-                            <p><strong>Platform: </strong>
+                            <p class="card-text-fix"><strong><?= $mypage['label_profile'] ?></strong> Web Developer </p>
+                            <p class="card-text-fix"><strong><?= $mypage['label_skills'] ?></strong> <?= $customInfo['skill'] ?></p>
+                            <p style="display: none;"><strong><?= $mypage['label_platform'] ?></strong>
                                 <span class="badge-fix btn-primary">WordPress</span>
                                 <span class="badge-fix btn-info">Weebly</span>
                                 <span class="badge-fix btn-warning">Bootstrap</span>
@@ -33,27 +32,41 @@
     </div>
 
     <div class="row m-b-15">
-        <div class="upload-form" id="uploader">
+        <div class="upload-form m-l-5 m-r-5">
             <!-- Form Heading -->
-            <h1 class="">Hồ sơ đính kèm</h1>
+            <h1 class="replace-text m-t-0"><?= $mypage['label_cv_attact'] ?></h1>
 
-            <p>Được cập nhật ngày 18/04/1028</p>
+            <div class="form-text-cv">
+                <p>Your resume </p>
+                <p>CV_Trinh Xuan Phuong_japanese.docx</p>
+                <p>Cập nhật ngày 30/05/2018</p>
+            </div>
 
-            <!-- Select & Upload Button -->
-            <div>
-                <a class="button" id="pickfiles" href="#">Chọn tệp</a>
-                <a class="button" id="uploadfiles" href="#">Tải lên</a>
+            <h1 class="replace-text m-t-20">Tải hồ sơ mới lên</h1>
+
+            <div class="m-b-10">
+                    <span class="fileUpload btn btn-md btn-success width-100">
+                        <span class="upl" id="upload"><?= $mypage['label_select_file'] ?></span>
+                        <form name="form1" id='form1' method="post" enctype="multipart/form-data" action="/Mypage">
+                            <input type="file" class="upload up" name="file_cv"/>
+                        </form>
+                    </span>
+                    <input type="button" name="upload" onclick="submitForm()" class="fileUpload btn btn-md btn-primary width-100" value="<?= $mypage['label_upload'] ?>">
+            </div>
+
+            <div class="bgwhite m-b-10 border-error">
+                <i class="fa fa-exclamation-circle m-l-5 text-red"></i>
+                <span class="text-red" >Định dạng tải lên phải là doc,docx,xls,xlsx,pdf</span>
             </div>
 
             <!-- File List -->
-            <div id="filelist" class="cb"></div>
-
-            <!-- Progress Bar -->
-            <div id="progressbar"></div>
-
+            <div class="file_list">
+                <div class="addedFile" style="display: none;">
+                    <span></span>
+                </div>
+            </div>
         </div>
     </div>
-
     <div class="row p-l-20 p-r-20 myjob" >
         <div class="col-xs-12">
             <div class="col-xs-2">
@@ -62,7 +75,7 @@
             <div class="col-xs-10">
                 <a href="#">
                     <h4>
-                        <strong>Nhà Tuyển Dụng Xem Hồ Sơ</strong>
+                        <strong><?= $mypage['label_view_profile'] ?></strong>
                     </h4>
                 </a>
             </div>
@@ -74,7 +87,7 @@
             <div class="col-xs-10">
                 <a href="#">
                     <h4>
-                        <strong> Việc làm đã lưu</strong>
+                        <strong> <?= $mypage['label_job_save'] ?></strong>
                     </h4>
                 </a>
             </div>
@@ -86,7 +99,7 @@
             <div class="col-xs-10">
                 <a href="#">
                     <h4>
-                        <strong> Việc làm đã ứng tuyển</strong>
+                        <strong> <?= $mypage['label_job_apply'] ?></strong>
                     </h4>
                 </a>
             </div>
@@ -94,9 +107,9 @@
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-<script src="js/screen/upload-form.js"></script>
-<script src="js/screen/plupload.full.js"></script>
-<script src="js/jquery/jquery-progressbar.min.js"></script>
-
-
+<script src="js/screen/upload-cv.js"></script>
+<script>
+    function submitForm() {
+            $("#form1" ).submit();
+        }
+</script>

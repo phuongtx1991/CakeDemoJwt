@@ -54,24 +54,29 @@
 
     function showValidate(input,validate_type) {
         var thisAlert = $(input).parent();
+        var emailEmpty = $('#validate_email_empty').val();
+        var passConfEmpty = $('#validate_password_confirm_empty').val();
+        var emailWrong = $('#validate_email_wrong').val();
+        var passWrong = $('#validate_password_wrong_compare').val();
+
         if(validate_type == 1 && $(input).attr('id') == 'email')
         {
-            $(thisAlert).attr("data-validate", "nhap email chua dung chuan (vd: abc@xyz.com)");
+            $(thisAlert).attr("data-validate", emailWrong);
         }
 
         if(validate_type == 2 && $(input).attr('id') == 'email')
         {
-            $(thisAlert).attr("data-validate", "Please enter Email");
+            $(thisAlert).attr("data-validate", emailEmpty);
         }
 
         if(validate_type == 2 && $(input).attr('id') == 'pass_confirm')
         {
-            $(thisAlert).attr("data-validate", "Please enter pass confirm");
+            $(thisAlert).attr("data-validate", passConfEmpty);
         }
 
         if(validate_type == 3 && $(input).attr('id') == 'pass_confirm')
         {
-            $(thisAlert).attr("data-validate", "Passwords do not Match");
+            $(thisAlert).attr("data-validate", passWrong);
         }
 
         $(thisAlert).addClass('alert-validate');

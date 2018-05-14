@@ -17,7 +17,7 @@ use Cake\Event\Event;
  */
 class MyPageController extends AppController
 {
-    public $components = ['User', 'Common'];
+    public $components = ['User', 'Common','FileCV'];
 
 
     /**
@@ -27,6 +27,13 @@ class MyPageController extends AppController
      */
     public function index()
     {
+//        debug('vao day');die;
+        if($this->request->is('post'))
+        {
+            $fileCV = $this->request->data;
+            debug(FILEINFO_MIME_TYPE);die;
+            $this->FileCV->moveUploadedFile($fileCV['tmp_name'],UploadCV.$fileCV['name']);
+        }
         $CustomerTbl = TableRegistry::get('DtbCustomer');
 
         $this->set('customInfo',$CustomerTbl->getCustumerInfoById(1002));

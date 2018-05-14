@@ -47,14 +47,16 @@
 
     function showValidate(input,validate_type) {
         var thisAlert = $(input).parent();
+        var emailEmpty = $('#validate_email_empty').val();
+        var emailWrong = $('#validate_email_wrong').val();
         if(validate_type == 1 && $(input).attr('id') == 'email')
         {
-            $(thisAlert).attr("data-validate", "nhap email chua dung chuan (vd: abc@xyz.com)");
+            $(thisAlert).attr("data-validate", emailWrong);
         }
 
         if(validate_type == 2 && $(input).attr('id') == 'email')
         {
-            $(thisAlert).attr("data-validate", "Please enter Email");
+            $(thisAlert).attr("data-validate", emailEmpty);
         }
 
         $(thisAlert).addClass('alert-validate');

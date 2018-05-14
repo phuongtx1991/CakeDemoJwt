@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 use App\Validation\NoptBaseValidator;
+use Cake\Core\Configure;
 
 
 /**
@@ -26,10 +27,11 @@ class LoginController extends AppController
      */
     public function index()
     {
+        $lang = $this->request->session()->read('lang');
         if ($this->request->is('post')) {
             $checkLogin = $this->User->checkLogin($this->request->data);
             if (!$checkLogin) {
-                $this->set('error', 'メールアドレスもしくはパスワードが正しくありません。');
+                $this->set('error', Configure::read('login.validate_login_fail.'.$lang));
             } else {
                 $this->request->session()->write('userData', $checkLogin);
                 $this->redirect('/searchjob');

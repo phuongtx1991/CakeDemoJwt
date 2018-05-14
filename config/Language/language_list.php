@@ -11,7 +11,7 @@ return [
         'address_info' => [
             'vn'=>'Phòng 319, tầng 3, tòa nhà UDIC Complex Hoàng Đạo Thúy,phường Trung Hòa, quận Cầu Giấy, thành phố Hà Nội.',
             'jp'=>'ハノイ市カウジャイ区チュンホア庁ホアンダオトゥイ通りUdic Complex ビル3階319号'],
-        'connect' => ['vn'=>'Kết nối với chúng tôi','jp'=>'Connect with us'],
+        'connect' => ['vn'=>'Kết nối với chúng tôi','jp'=>'私達と接続いたします'],
     ],
     'searchjob' => [
         'title_search' => ['vn'=>'Tìm kiếm công việc','jp'=>'仕事検索'],
@@ -30,8 +30,7 @@ return [
         'attractive_job' => ['vn'=>'Việc làm hấp dẫn','jp'=>'人気の仕事'],
         'hiring_job' => ['vn'=>'Việc làm tuyển gấp','jp'=>'急募の仕事'],
         ],
-    'jobdetail' => [
-    ],
+
     'updateuserinfo' => [
         //content
         'reminder' => [
@@ -158,6 +157,100 @@ return [
         'label_skill' => ['vn'=>'Kỹ năng','jp'=>'資格'],
         'label_qualification' => ['vn'=>'Chứng chỉ','jp'=>'スキル'],
         'label_self_pr' => ['vn'=>'Pr bản thân:','jp'=>'自己PR'],
+    ],
+    'mypage' => [
+        'label_update_cv' => ['vn'=>'Cập nhật hồ sơ','jp'=>'プロフィール更新'],
+        'label_profile' => ['vn'=>'Profile :','jp'=>'プロフィール :'],
+        'label_skills' => ['vn'=>'Skills :','jp'=>'スキル :'],
+        'label_platform' => ['vn'=>'Platform :','jp'=>'プラットフォーム :'],
+        'label_cv_attact' => ['vn'=>'Hồ sơ đính kèm','jp'=>'添付履歴書'],
+        'label_update_time' => ['vn'=>'Được cập nhật ngày :','jp'=>'更新日 :'],
+        'label_select_file' => ['vn'=>'Chọn tệp','jp'=>'ファイル選択'],
+        'label_upload' => ['vn'=>'Tải lên','jp'=>'アップロード'],
+        'label_view_profile' => ['vn'=>'Nhà tuyển dụng xem hồ sơ','jp'=>'履歴書を見たリクルーター'],
+        'label_job_save' => ['vn'=>'Việc làm đã lưu','jp'=>'キープしたお仕事'],
+        'label_job_apply' => ['vn'=>'Việc làm đã ứng tuyển','jp'=>'応募したお仕事'],
+    ],
+    'jobdetail' => [
+        'label_end_date' => ['vn'=>'Ngày hết hạn : ','jp'=>'終了日 : '],
+        'label_popularity' => ['vn'=>'HẤP DẪN','jp'=>'人気'],
+        'label_dispatch' => ['vn'=>'TUYỂN GẤP','jp'=>'急募'],
+        'label_apply' => ['vn'=>'ỨNG TUYỂN','jp'=>'応募'],
+        'label_rec_info' => ['vn'=>'THÔNG TIN TUYỂN DỤNG','jp'=>'募集情報'],
+        'label_employment_status' => ['vn'=>'Loại công việc','jp'=>'雇用形態'],
+        'label_position' => ['vn'=>'Vị trí','jp'=>'ポジション'],
+        'label_salary_rank' => ['vn'=>'Lương','jp'=>'給与'],
+        'label_place' => ['vn'=>'Địa điểm làm việc','jp'=>'勤務地'],
+        'label_traffic_access' => ['vn'=>'Hướng dẫn đi lại','jp'=>'交通アクセス'],
+        'label_work_time' => ['vn'=>'Thời gian làm việc','jp'=>'勤務時間'],
+        'label_working_day' => ['vn'=>'Ngày làm việc','jp'=>'勤務時間'],
+        'label_trial_period' => ['vn'=>'Thời gian thử việc','jp'=>'試用期間'],
+
+        'label_work_conditions' => ['vn'=>'YÊU CẦU CÔNG VIỆC','jp'=>'仕事条件'],
+        'label_offer_number' => ['vn'=>'Số lượng tuyển','jp'=>'仕事数'],
+        'label_sex' => ['vn'=>'Giới tính','jp'=>'性別'],
+        'label_qualification' => ['vn'=>'Bằng cấp','jp'=>'資格'],
+        'label_personality' => ['vn'=>'Tính cách','jp'=>'性格'],
+        'label_skill' => ['vn'=>'Kinh nghiệm, kỹ năng','jp'=>'経験・スキルの詳細'],
+
+        'label_welfare' => ['vn'=>'CHẾ ĐỘ, PHÚC LỢI','jp'=>'福利厚生・制度'],
+        'label_payrise' => ['vn'=>'Tăng lương','jp'=>'昇給'],
+        'label_bonus' => ['vn'=>'Thưởng','jp'=>'賞与'],
+        'label_insurance' => ['vn'=>'Bảo hiểm','jp'=>'保険'],
+        'label_welfare_content' => ['vn'=>'phúc lợi','jp'=>'福利'],
+        'label_other_welfare' => ['vn'=>'phúc lợi khác','jp'=>'その他の福利'],
+        'label_medical_checkup' => ['vn'=>'Khám sức khỏe','jp'=>'健康診断'],
+
+        'label_job_description' => ['vn'=>'MÔ TẢ CÔNG VIỆC','jp'=>'仕事詳細'],
+
+        'label_employer_info' => ['vn'=>'THÔNG TIN NHÀ TUYỂN DỤNG','jp'=>'会社紹介'],
+
+        'label_application_method' => ['vn'=>'PHƯƠNG PHÁP ỨNG TUYỂN','jp'=>'応募方法'],
+        'label_application_conntent' => ['vn'=>'phương pháp ứng tuyển','jp'=>'応募方法'],
+        'label_selection_process' => ['vn'=>'Quy trình xét tuyển','jp'=>'選考プロセス'],
+        'label_person_charge' => ['vn'=>'Người phụ trách','jp'=>'担当者'],
+
+        'content_lunch_time' => ['vn'=>'Giờ nghỉ trưa : ','jp'=>'昼休み時間：'],
+
+        'sex_show' => [
+            'vn' => ['Không yêu cầu','Nam','Nữ'],
+            'jp' => ['不要','男性','女性'],
+        ],
+    ],
+    'regist' => [
+        'label_sign_up' => ['vn'=>'Đăng ký thành viên','jp'=>'会員登録'],
+        'label_sign_up_text' => ['vn'=>'Đăng ký','jp'=>'会員登録をする'],
+        'label_have_acc' => ['vn'=>'Bạn đã có tài khoản ?','jp'=>'アカウントがありますか？'],
+        'label_login' => ['vn'=>'Đăng nhập','jp'=>'ログイン'],
+
+        'placeholder_name01' => ['vn'=>'Tên của bạn','jp'=>'名前'],
+        'placeholder_name02' => ['vn'=>'Họ của bạn','jp'=>'性名'],
+        'placeholder_email' => ['vn'=>'Địa chỉ email','jp'=>'メールアドレス'],
+        'placeholder_password' => ['vn'=>'Mật khẩu','jp'=>'パスワード'],
+        'placeholder_password_confirm' => ['vn'=>'Mật khẩu xác nhận','jp'=>'確認パスワード'],
+
+        'validate_name01_empty' => ['vn'=>'Bạn chưa nhập tên của bạn','jp'=>'お名前(姓)が入力されていません'],
+        'validate_name02_empty' => ['vn'=>'Bạn chưa nhập tên của bạn','jp'=>'お名前(名)が入力されていません'],
+        'validate_email_empty' => ['vn'=>'Bạn chưa nhập email','jp'=>'メールアドレスが入力されていません'],
+        'validate_email_wrong' => ['vn'=>'nhap email chua dung chuan (vd: abc@xyz.com)','jp'=>'メールアドレスの形式が不正です (例: abc@xyz.com)'],
+        'validate_password_empty' => ['vn'=>'Bạn chưa nhập mật khẩu','jp'=>'パスワードが入力されていません'],
+        'validate_password_confirm_empty' => ['vn'=>'Bạn chưa nhập mật khẩu xác nhận','jp'=>'パスワード(確認)が入力されていません'],
+        'validate_password_wrong_compare' => ['vn'=>'Mật khẩu xác nhận không chính xác','jp'=>'パスワード(確認)が不正です'],
+    ],
+
+    'login' => [
+        'label_sign_in' => ['vn'=>'Đăng nhập','jp'=>'ログイン'],
+        'label_forgot' => ['vn'=>'Quên mật khẩu','jp'=>'パスワードを忘れた方'],
+        'label_dont_have_acc' => ['vn'=>'Bạn chưa có tài khoản ?','jp'=>'アカウントがまだありませんか？'],
+        'label_sign_up_now' => ['vn'=>'Đăng ký ngay','jp'=>'会員登録'],
+
+        'placeholder_email' => ['vn'=>'Địa chỉ email','jp'=>'メールアドレス'],
+        'placeholder_password' => ['vn'=>'Mật khẩu','jp'=>'パスワード'],
+
+        'validate_email_empty' => ['vn'=>'Bạn chưa nhập email','jp'=>'メールアドレスが入力されていません'],
+        'validate_email_wrong' => ['vn'=>'nhap email chua dung chuan (vd: abc@xyz.com)','jp'=>'メールアドレスの形式が不正です (例: abc@xyz.com)'],
+        'validate_password_empty' => ['vn'=>'Bạn chưa nhập mật khẩu','jp'=>'パスワードが入力されていません'],
+        'validate_login_fail' => ['vn'=>'Tài khoản hoặc mật khẩu không đúng','jp'=>'メールアドレスもしくはパスワードが正しくありません'],
     ],
 ];
 

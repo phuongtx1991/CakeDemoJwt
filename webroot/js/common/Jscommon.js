@@ -30,20 +30,6 @@ $(document).ready(function () {
         window.location.assign(link);
     });
 
-    //detail screen show hide group
-    $(".detail-title").click(function () {
-        // $( ".detail-info" ).slideToggle( "slow" );
-        $(this).next(".detail-info").slideToggle("fast");
-        var collection = $(this).find("i.fa-plus-square");
-        if (collection.length > 0) {
-            collection.addClass('fa-minus-square');
-            collection.removeClass('fa-plus-square');
-        } else {
-            $(this).find("i.fa-minus-square").addClass('fa-plus-square');
-            $(this).find("i.fa-minus-square").removeClass('fa-minus-square');
-        }
-    });
-
     //show hide menu bar
     var $navi = $("#navigation"), scrollTop = 0;
     $(window).scroll(function () {
