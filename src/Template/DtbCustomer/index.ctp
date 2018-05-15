@@ -27,6 +27,7 @@
                 <th scope="col"><?= $this->Paginator->sort('update_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('del_flg') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('receive_work_info') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('cv_update') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('marital_status') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('current_address') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('education') ?></th>
@@ -52,6 +53,7 @@
                 <td><?= h($dtbCustomer->update_date) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->del_flg) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->receive_work_info) ?></td>
+                <td><?= h($dtbCustomer->cv_update) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->marital_status) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->current_address) ?></td>
                 <td><?= $this->Number->format($dtbCustomer->education) ?></td>

@@ -1,27 +1,4 @@
 
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-@font-face {
-    font-family: Ubuntu-Regular;
-    src: url('../fonts/ubuntu/Ubuntu-Regular.ttf');
-}
-
-@font-face {
-    font-family: Ubuntu-Bold;
-    src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
-}
-
-@font-face {
-    font-family: JosefinSans-Bold;
-    src: url('../fonts/JosefinSans/JosefinSans-Bold.ttf');
-}
-
-
-
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
@@ -164,7 +141,7 @@ iframe {
 
 .container-login100 {
     width: 100%;
-    min-height: 100vh;
+    /*min-height: 80vh;*/
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -377,6 +354,19 @@ iframe {
 .alert-validate:hover:before {
     visibility: visible;
     opacity: 1;
+}
+
+.place::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 1; /* Firefox */
+}
+
+.place:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+}
+
+.place::-ms-input-placeholder { /* Microsoft Edge */
+    color: red;
 }
 
 @media (max-width: 992px) {

@@ -16,7 +16,7 @@
                         </div>
                         <div class="col-md-8 col-sm-8">
                             <h2 class="card-title-fix text-center m-t-15"><?= $customInfo['name02'] ?> <?= $customInfo['name01'] ?></h2>
-                            <p class="card-text-fix"><strong><?= $mypage['label_profile'] ?></strong> Web Developer </p>
+                            <p class="card-text-fix"><strong><?= $mypage['label_profile'] ?></strong> <?= $lastPosition ?> </p>
                             <p class="card-text-fix"><strong><?= $mypage['label_skills'] ?></strong> <?= $customInfo['skill'] ?></p>
                             <p style="display: none;"><strong><?= $mypage['label_platform'] ?></strong>
                                 <span class="badge-fix btn-primary">WordPress</span>
@@ -37,12 +37,12 @@
             <h1 class="replace-text m-t-0"><?= $mypage['label_cv_attact'] ?></h1>
 
             <div class="form-text-cv">
-                <p>Your resume </p>
-                <p>CV_Trinh Xuan Phuong_japanese.docx</p>
-                <p>Cập nhật ngày 30/05/2018</p>
+                <p><?= $mypage['label_cv_name'] ?></p>
+                <p> <i class="fa fa fa-newspaper-o m-l-5 text-red"></i> <?= !empty($customInfo['cv_name']) ? $customInfo['cv_name'] : $mypage['label_non_upload_cv'] ?></p>
+                <p><?= $mypage['label_update_time'] ?> <?= !empty($customInfo['cv_update']) ? $customInfo['cv_update']->i18nFormat('YYYY/MM/dd') : '' ?></p>
             </div>
 
-            <h1 class="replace-text m-t-20">Tải hồ sơ mới lên</h1>
+            <h1 class="replace-text m-t-20"><?= $mypage['label_upload_new_cv'] ?></h1>
 
             <div class="m-b-10">
                     <span class="fileUpload btn btn-md btn-success width-100">
@@ -54,10 +54,12 @@
                     <input type="button" name="upload" onclick="submitForm()" class="fileUpload btn btn-md btn-primary width-100" value="<?= $mypage['label_upload'] ?>">
             </div>
 
+            <?php if(isset($error)) : ?>
             <div class="bgwhite m-b-10 border-error">
                 <i class="fa fa-exclamation-circle m-l-5 text-red"></i>
-                <span class="text-red" >Định dạng tải lên phải là doc,docx,xls,xlsx,pdf</span>
+                <span class="text-red" ><?= $error ?></span>
             </div>
+            <?php endif; ?>
 
             <!-- File List -->
             <div class="file_list">
@@ -67,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div class="row p-l-20 p-r-20 myjob" >
+    <div class="row p-l-20 p-r-20 myjob" style="display: none" >
         <div class="col-xs-12">
             <div class="col-xs-2">
                 <span class="green-color">03</span>

@@ -14,12 +14,16 @@
                 </div>
             </div>
 
-            <p class="deadline"><?= $jobdetail['label_end_date'] ?> <?= $JobInfo['end_date'] ?></p>
+            <p class="deadline"><?= $jobdetail['label_end_date'] ?> <?= $JobInfo['end_date']->i18nFormat('YYYY/MM/dd') ?></p>
             <div class="col-xs-6 text-align-right">
-                <i class="fa fa-star-o job-status abs-box"><span>&#32;<?= $jobdetail['label_popularity'] ?></span></i>
+                <?php if(isset($JobInfo['product_status_id'][0])) : ?>
+                    <i class="fa fa-star-o job-status abs-box"><span>&#32;<?= $jobdetail['label_popularity'] ?></span></i>
+                <?php endif; ?>
             </div>
             <div class="col-xs-6 text-align-left">
-                <i class="fa fa-rocket job-status rec-fast-box"><span>&#32;<?= $jobdetail['label_dispatch'] ?></span></i>
+                <?php if(isset($JobInfo['product_status_id'][1])) : ?>
+                    <i class="fa fa-rocket job-status rec-fast-box"><span>&#32;<?= $jobdetail['label_dispatch'] ?></span></i>
+                <?php endif; ?>
             </div>
 
             <div class="col-xs-10 col-xs-offset-1 text-align-center apply-button" style="display: none">

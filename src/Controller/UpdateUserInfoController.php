@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use Cake\Core\Configure;
+use Cake\Event\Event;
+
 
 /**
  * Users Controller
@@ -16,6 +19,22 @@ class UpdateUserInfoController extends AppController
 {
 
     public $components = ['User'];
+
+    /**
+     * Before filter callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     * @return void
+     */
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        //Check if not logged in
+        if(!$this->request->session()->check('userData'))
+        {
+            $this->redirect('/Login');
+        }
+    }
 
     /**
      * Index method
@@ -51,8 +70,13 @@ class UpdateUserInfoController extends AppController
         $region = $this->bindingDataFromTbl($regionTbl->getAllRegion(),$textLang);
         $this->set('region',$region);
 
-        $this->set('customInfo',$CustomerTbl->getCustumerInfoById(1002));
-        $this->set('customExp',$CustomerExpTbl->getCustumerExpById(1002));
+        //customer info
+        $this->set('customInfo',$CustomerTbl->getCustomerInfoById($this->customerId));
+        //customer experion
+        $this->set('customExp',$CustomerExpTbl->getCustumerExpById($this->customerId));
+
+
+
     }
 
     private function bindingDataFromTbl($tblArray,$textLang)

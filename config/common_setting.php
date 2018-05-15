@@ -6,5 +6,6 @@ return [
     //
     'Common' => [
                 'language' => ['vn'=>1,'jp'=>2],
+                'max_size_upload' => 2097152,
             ],
 ];

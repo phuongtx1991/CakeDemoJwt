@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\DtbCustomerController;
+use App\Controller\DtbProductStatusController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\DtbCustomerController Test Case
+ * App\Controller\DtbProductStatusController Test Case
  */
-class DtbCustomerControllerTest extends IntegrationTestCase
+class DtbProductStatusControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,8 +16,10 @@ class DtbCustomerControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.dtb_customer',
-        'app.countries'
+        'app.dtb_product_status',
+        'app.product_statuses',
+        'app.products',
+        'app.creators'
     ];
 
     /**

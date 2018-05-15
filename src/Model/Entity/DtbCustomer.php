@@ -34,6 +34,7 @@ use Cake\ORM\Entity;
  * @property string $image
  * @property string $cv
  * @property string $cv_name
+ * @property \Cake\I18n\FrozenDate $cv_update
  * @property int $marital_status
  * @property int $current_address
  * @property string $pref_by_text
@@ -57,7 +58,6 @@ use Cake\ORM\Entity;
  * @property string $self_pr
  *
  * @property \App\Model\Entity\Country $country
- * @property \App\Model\Entity\MobilePhone $mobile_phone
  */
 class DtbCustomer extends Entity
 {
@@ -99,6 +99,7 @@ class DtbCustomer extends Entity
         'image' => true,
         'cv' => true,
         'cv_name' => true,
+        'cv_update' => true,
         'marital_status' => true,
         'current_address' => true,
         'pref_by_text' => true,
@@ -120,8 +121,7 @@ class DtbCustomer extends Entity
         'qualification' => true,
         'skill' => true,
         'self_pr' => true,
-        'country' => true,
-        'mobile_phone' => true
+        'country' => true
     ];
 
     /**

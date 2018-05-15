@@ -30,6 +30,11 @@ use Cake\Routing\Router;
 class AppController extends Controller
 {
 
+    protected $textLangCommon;
+
+    protected $lang;
+
+    protected $customerId;
     /**
      * Initialization hook method.
      *
@@ -69,13 +74,27 @@ class AppController extends Controller
         } elseif (!$this->request->session()->check('lang')) {
             $this->request->session()->write('lang', 'vn');
         }
-        $this->set('lang', $this->request->session()->read('lang'));
-        $textLangCommon = $this->request->session()->read('lang') == 'vn' ? '_vn' : '';
-        $this->set('textLangCommon', $textLangCommon);
+
+        $this->lang = $this->request->session()->read('lang');
+        $this->set('lang', $this->lang);
+
+        $this->textLangCommon = $this->lang == 'vn' ? '_vn' : '';
+        $this->set('textLangCommon', $this->textLangCommon);
         $controller = Router::getRequest()->params['controller'];
         $controller = strtolower($controller);
         $this->set($controller, $this->Common->textForView($controller));
+        if($controller == 'logout')
+        {
+            $this->request->session()->delete('userData');
+            $this->redirect('/SearchJob');
+        }
 
-        $this->set('customerId', 1002);
+        if($this->request->session()->check('userData'))
+        {
+            $userData = $this->request->session()->read('userData');
+            $this->set('userData', $userData);
+            $this->customerId = $userData['customer_id'];
+        }
+
     }
 }

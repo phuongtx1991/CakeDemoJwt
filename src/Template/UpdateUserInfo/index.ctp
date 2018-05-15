@@ -407,7 +407,7 @@
                         <textarea cols="10" rows="2" charswidth="23" class="form-control textarea-ver-fix" name="self_pr"><?= $customInfo['self_pr'] ?></textarea>
                     </div>
                     <br/>
-                    <input type="hidden" name="customer_id" value="<?= $customerId ?>">
+                    <input type="hidden" name="customer_id" value="<?= $userData['customer_id'] ?>">
                     <div class="form-wizard-buttons">
                         <button type="button" class="btn btn-previous btn-fix"><?= $updateuserinfo['btn_back'] ?></button>
                         <button type="submit" class="btn btn-submit btn-fix"><?= $updateuserinfo['btn_submit'] ?></button>

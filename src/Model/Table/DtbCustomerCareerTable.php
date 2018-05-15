@@ -95,6 +95,22 @@ class DtbCustomerCareerTable extends Table
         }
     }
 
+    public function getLastPosition($customer_id)
+    {
+        try {
+            $result = $this->find()
+                ->select(['position'])
+                ->where(['customer_id' => $customer_id])
+                ->order(['start_date' => 'DESC'])
+                ->hydrate(false)
+                ->first();
+            return $result;
+        } catch (Exception $e) {
+            return false;
+            throw $e;
+        }
+    }
+
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.

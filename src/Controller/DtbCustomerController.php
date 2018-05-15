@@ -21,7 +21,7 @@ class DtbCustomerController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Countries', 'MobilePhones']
+            'contain' => ['Countries']
         ];
         $dtbCustomer = $this->paginate($this->DtbCustomer);
 
@@ -38,7 +38,7 @@ class DtbCustomerController extends AppController
     public function view($id = null)
     {
         $dtbCustomer = $this->DtbCustomer->get($id, [
-            'contain' => ['Countries', 'MobilePhones']
+            'contain' => ['Countries']
         ]);
 
         $this->set('dtbCustomer', $dtbCustomer);
@@ -62,8 +62,7 @@ class DtbCustomerController extends AppController
             $this->Flash->error(__('The dtb customer could not be saved. Please, try again.'));
         }
         $countries = $this->DtbCustomer->Countries->find('list', ['limit' => 200]);
-        $mobilePhones = $this->DtbCustomer->MobilePhones->find('list', ['limit' => 200]);
-        $this->set(compact('dtbCustomer', 'countries', 'mobilePhones'));
+        $this->set(compact('dtbCustomer', 'countries'));
     }
 
     /**
@@ -88,8 +87,7 @@ class DtbCustomerController extends AppController
             $this->Flash->error(__('The dtb customer could not be saved. Please, try again.'));
         }
         $countries = $this->DtbCustomer->Countries->find('list', ['limit' => 200]);
-        $mobilePhones = $this->DtbCustomer->MobilePhones->find('list', ['limit' => 200]);
-        $this->set(compact('dtbCustomer', 'countries', 'mobilePhones'));
+        $this->set(compact('dtbCustomer', 'countries'));
     }
 
     /**

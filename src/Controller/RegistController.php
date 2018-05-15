@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use Cake\Core\Configure;
 
 /**
  * Users Controller
@@ -31,13 +32,13 @@ class RegistController extends AppController
             if (!$checkEmailExist) {
                 $result = $this->User->registUser($this->request->data);
                 if ($result) {
-                    $this->redirect('/searchjob');
+                    $this->redirect('/Login');
                 } else {
                     debug("false");
                     die;
                 }
             } else {
-                $this->set('error', 'Địa chỉ email đã tồn tại. Nếu bạn đã có tài khoản, xin hãy vào trang đăng nhập.');
+                $this->set('error', Configure::read('regist.validate_email_existed.'.$this->lang));
                 $this->set('data', $data);
             }
         }

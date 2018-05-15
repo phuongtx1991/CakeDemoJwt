@@ -25,8 +25,7 @@ class DtbCustomerTableTest extends TestCase
      */
     public $fixtures = [
         'app.dtb_customer',
-        'app.countries',
-        'app.mobile_phones'
+        'app.countries'
     ];
 
     /**
@@ -114,11 +113,21 @@ class DtbCustomerTableTest extends TestCase
     }
 
     /**
-     * Test getCustumerInfoById method
+     * Test getCustomerInfoById method
      *
      * @return void
      */
-    public function testGetCustumerInfoById()
+    public function testGetCustomerInfoById()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getCustomerCVById method
+     *
+     * @return void
+     */
+    public function testGetCustomerCVById()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

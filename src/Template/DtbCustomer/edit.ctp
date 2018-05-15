@@ -48,6 +48,7 @@
             echo $this->Form->control('image');
             echo $this->Form->control('cv');
             echo $this->Form->control('cv_name');
+            echo $this->Form->control('cv_update', ['empty' => true]);
             echo $this->Form->control('marital_status');
             echo $this->Form->control('current_address');
             echo $this->Form->control('pref_by_text');

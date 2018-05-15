@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/screen/for-login.css"/>
 
-<div class="limiter m-t-100" style="margin-top: 100px">
-    <div class="container-login100">
+<div class="limiter">
+    <div class="container-login100 m-t-50">
         <div class="wrap-login100">
             <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="post">
                     <span class="login100-form-title">
@@ -17,39 +17,44 @@
                 <?php endif; ?>
 
                 <div class="wrap-input100 validate-input m-b-16" data-validate="<?= $regist['validate_name01_empty'] ?>">
-                    <input class="input100" type="text" name="name01" id="name01"
-                           value="<?= (isset($data['name01']))? $data['name01'] : ''; ?>" placeholder="<?= $regist['placeholder_name01'] ?>">
+                    <input class="input100 place" type="text" name="name01" id="name01"
+                           value="<?= (isset($data['name01']))? $data['name01'] : ''; ?>" placeholder="<?= $regist['placeholder_name01'] ?>(*)">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-16" data-validate="<?= $regist['validate_name02_empty'] ?>">
-                    <input class="input100" type="text" name="name02" id="name02" value="<?= (isset($data['name02']))? $data['name02'] : ''; ?>" placeholder="<?= $regist['placeholder_name02'] ?>">
+                    <input class="input100 place" type="text" name="name02" id="name02" value="<?= (isset($data['name02']))? $data['name02'] : ''; ?>" placeholder="<?= $regist['placeholder_name02'] ?>(*)">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 m-b-16" data-validate="<?= $regist['validate_name02_empty'] ?>">
+                    <input class="input100" type="number" name="phone"  value="<?= (isset($data['phone']))? $data['phone'] : ''; ?>" placeholder="Số điện thoại">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-16" data-validate="">
-                    <input class="input100" type="text" name="email" id="email" placeholder="<?= $regist['placeholder_email'] ?>">
+                    <input class="input100 place" type="text" name="email" id="email" placeholder="<?= $regist['placeholder_email'] ?>(*)">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-16" data-validate="<?= $regist['validate_password_empty'] ?>">
-                    <input class="input100" type="password" id="pass" name="password" placeholder="<?= $regist['placeholder_password'] ?>">
+                    <input class="input100 place" type="password" id="pass" name="password" placeholder="<?= $regist['placeholder_password'] ?>(*)">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-16" data-validate="">
-                    <input class="input100" type="password" id="pass_confirm" name="pass_confirm"
-                           placeholder="<?= $regist['placeholder_password_confirm'] ?>">
+                    <input class="input100 place" type="password" id="pass_confirm" name="pass_confirm"
+                           placeholder="<?= $regist['placeholder_password_confirm'] ?>(*)">
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="container-login100-form-btn">
+                <div class="container-login100-form-btn m-t-60">
                     <button class="login100-form-btn">
                         <?= $regist['label_sign_up_text'] ?>
                     </button>
                 </div>
 
-                <div class="flex-col-c p-t-170 p-b-40">
+                <div class="flex-col-c p-t-30 p-b-20">
                         <span class="txt1 p-b-9">
                             <?= $regist['label_have_acc'] ?>
                         </span>

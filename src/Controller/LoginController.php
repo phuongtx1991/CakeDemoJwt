@@ -34,7 +34,7 @@ class LoginController extends AppController
                 $this->set('error', Configure::read('login.validate_login_fail.'.$lang));
             } else {
                 $this->request->session()->write('userData', $checkLogin);
-                $this->redirect('/searchjob');
+                $this->redirect('/Mypage');
             }
         }
     }

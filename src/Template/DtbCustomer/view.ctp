@@ -92,6 +92,10 @@
             <th scope="row"><?= __('Update Date') ?></th>
             <td><?= h($dtbCustomer->update_date) ?></td>
         </tr>
+        <tr>
+            <th scope="row"><?= __('Cv Update') ?></th>
+            <td><?= h($dtbCustomer->cv_update) ?></td>
+        </tr>
     </table>
     <div class="row">
         <h4><?= __('Name01') ?></h4>

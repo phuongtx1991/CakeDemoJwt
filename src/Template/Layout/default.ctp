@@ -45,10 +45,15 @@ use Cake\Core\Configure;
                 <a class="hamburger-nav"></a>
                 <ul class="menu" style="margin-top: 19px;">
                     <!--<a href="#home"><li><i class="fa fa-home"></i> Home</li></a>-->
-                    <a href="/regist"><li><i class="fa fa-file-image-o"></i>&nbsp;<?= Configure::read('Common.regist.'.$lang) ?></li></a>
-                    <a href="#about"><li><i class="fa fa-user"></i>&nbsp;<?= Configure::read('Common.about_us.'.$lang) ?></li></a>
-                    <a href="#contact"><li><i class="fa fa-envelope"></i>&nbsp;<?= Configure::read('Common.contact.'.$lang) ?></li></a>
-                    <a href="/login"><li><i class="fa fa-cogs"></i>&nbsp;<?= Configure::read('Common.login.'.$lang) ?></li></a>
+                    <!--<a href="#about"><li><i class="fa fa-user"></i>&nbsp;<?= Configure::read('Common.about_us.'.$lang) ?></li></a>-->
+                    <!--<a href="#contact"><li><i class="fa fa-envelope"></i>&nbsp;<?= Configure::read('Common.contact.'.$lang) ?></li></a>-->
+                    <?php if(!isset($userData)) : ?>
+                        <a href="/regist"><li><i class="fa fa-file-image-o"></i>&nbsp;<?= Configure::read('Common.regist.'.$lang) ?></li></a>
+                        <a href="/login"><li><i class="fa fa-sign-in"></i>&nbsp;<?= Configure::read('Common.login.'.$lang) ?></li></a>
+                    <?php else : ?>
+                        <a href="/Mypage"><li><i class="fa fa-user"></i>&nbsp;<?= Configure::read('Common.mypage.'.$lang) ?></li></a>
+                        <a href="/Logout"><li><i class="fa fa-sign-out"></i>&nbsp;<?= Configure::read('Common.logout.'.$lang) ?></li></a>
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>

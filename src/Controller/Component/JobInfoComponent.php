@@ -24,6 +24,7 @@ class JobInfoComponent extends Component
         $empStatusTbl = TableRegistry::get('MtbEmploymentStatus');
         $welfareTbl = TableRegistry::get('MtbWelfare');
         $processTbl = TableRegistry::get('MtbProcess');
+        $jobStatusTbl = TableRegistry::get('DtbProductStatus');
 
         $sex = Configure::read('jobdetail.sex_show.' . $lang);
         $infoRecArray = $jobTbl->getJobInfoById($id);
@@ -62,7 +63,14 @@ class JobInfoComponent extends Component
             $processStr .= '■ ' . $processTbl->getProcessById($item)['name' . $textLang] . '<br>';
         }
         $infoRecArray['selection_process'] = $processStr;
-//        debug($infoRecArray);die;
+
+        //job req status
+        $infoRecArray['product_status_id'] = $jobStatusTbl->getJobStatus($id);
+        foreach ($infoRecArray['product_status_id'] as $key => $item) {
+
+            $infoRecArray['product_status_id'][$key] = $item['product_status_id'];
+        }
+
         return $infoRecArray;
     }
 }

@@ -32,47 +32,68 @@ class FileCVComponent extends Component
      * @return string アップロードしたディレクトリパス
      *
      */
-    public function UploadSingleFile($user_data, $file_input, $file_id)
+    public function UploadSingleFile($file_input,$customerId)
     {
-
+        $customerTbl = TableRegistry::get('DtbCustomer');
         if ($file_input['tmp_name'] == "") {
-            return "";
+            return false;
         }
 
-        // create upload target directory
-        $targetPath = $this->getTargetPath($user_data['user_seq']);
-
-        $userPath = $this->upload_dir . $this->base . $user_data['user_seq'];
-        // -- mkdir and chmod, for target directory
-        $this->Common->umaskMkdir($userPath, 0777);
-        $this->Common->umaskMkdir($targetPath, 0777);
+        //Create a unique file name.
+        $uniqname = date('mdHi') . '_' . uniqid('').'.';
+        $saveFileName = preg_replace("/^.*\./", $uniqname, $file_input['name']);
 
         // upload  - from phptemp to My Directory
         $tempFile = $file_input['tmp_name'];
 
-        // make uploaded file name
-        $savingFile = $targetPath . $file_id;
-
         // save as file_id
-        $result = $this->moveUploadedFile($tempFile, $savingFile);
+        $result = $this->moveUploadedFile($tempFile, UploadCV . $saveFileName);
         if ($result) {
-            chmod($savingFile, 0777);
-        }
-        if (!file_exists($savingFile)) {
-            return '';
-        }
+            //get old cv file upload
+            $oldCv = $customerTbl->getCustomerCVById($customerId);
 
-        return $targetPath;
+            //insert cv file info to db
+            $insertResult = $this->InsertFileInfo($saveFileName,$file_input['name'],$customerId);
+            //delete old cv file
+            if($insertResult)
+            {
+                //delete cv file uploaded (add show log delete result on future)
+                $this->DeleteUploadFile($oldCv['cv'],UploadCV);
+            }
+            return $insertResult;
+        }else{
+            return false;
+        }
     }
 
-    //アップロードファイルを削除
-    public function DeleteUploadFile($user_seq, $name)
+    public function InsertFileInfo($saveFileName,$fileName,$customerId)
     {
-        $directory = $this->upload_dir . $this->base . $user_seq . $this->target . $name;
-        if (is_file($directory)) {
-            $result = unlink($directory);
+        $customerTbl = TableRegistry::get('DtbCustomer');
+        $entity = $customerTbl->get($customerId);
+        $entity->cv = $saveFileName;
+        $entity->cv_name = $fileName;
+        $entity->cv_update = date("Y-m-d");
+
+
+        try {
+            //transaction
+            $customerTbl->connection()->transactional(function () use ($customerTbl, $entity) {
+                $customerTbl->save($entity, ['atomic' => false]);
+            });
+            return true;
+        } catch (Exception $e) {
+            return false;
         }
-        return $directory;
+
+    }
+    //アップロードファイルを削除
+    public function DeleteUploadFile($name,$path)
+    {
+        $result = false;
+        if (is_file($path.$name)) {
+            $result = unlink($path.$name);
+        }
+        return $result;
     }
 
     public function moveUploadedFile($filename, $destination)

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -162,6 +161,10 @@ class DtbCustomerTable extends Table
             ->allowEmpty('cv_name');
 
         $validator
+            ->date('cv_update')
+            ->allowEmpty('cv_update');
+
+        $validator
             ->allowEmpty('marital_status');
 
         $validator
@@ -308,10 +311,25 @@ class DtbCustomerTable extends Table
         }
     }
 
-    public function getCustumerInfoById($customer_id)
+    public function getCustomerInfoById($customer_id)
     {
         try {
             $result = $this->find()
+                ->where(['customer_id' => $customer_id])
+                ->hydrate(false)
+                ->first();
+            return $result;
+        } catch (Exception $e) {
+            return false;
+            throw $e;
+        }
+    }
+
+    public function getCustomerCVById($customer_id)
+    {
+        try {
+            $result = $this->find()
+                ->select(['cv'])
                 ->where(['customer_id' => $customer_id])
                 ->hydrate(false)
                 ->first();

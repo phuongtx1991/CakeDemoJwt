@@ -84,6 +84,8 @@ div.detail-company div div p {
     padding: 10px 10px 10px 10px;
     border-radius: 64px;
     font-size: 10px;
+    min-width: 80px;
+    text-align: center;
 }
 
 .text-align-left {
