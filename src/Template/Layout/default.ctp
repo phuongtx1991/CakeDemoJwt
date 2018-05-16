@@ -4,12 +4,12 @@ use Cake\Core\Configure;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>出退勤入力（スマホ）</title>
+    <title>hyperion-job</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/common/bootstrap.css"/>
     <link rel="stylesheet"  href="css/font-awesome.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <link rel="stylesheet" href="css/common/common.css"/>
     <link href="css/bootstrap-toggle.css" rel="stylesheet">
     <link href="css/common/util.css" rel="stylesheet">
@@ -102,6 +102,11 @@ use Cake\Core\Configure;
             <div class="col-xs-12 footer-contact-icon">
                 <i>
                     <img src="img/common_img/icon/tel_full.png" alt="Facebook"/>
+                </i>
+            </div>
+            <div class="col-xs-12 footer-contact-icon">
+                <i>
+                    <img src="img/common_img/icon/tel_full_jp.png" alt="Facebook"/>
                 </i>
             </div>
             <div class="col-xs-12 footer-contact-icon">

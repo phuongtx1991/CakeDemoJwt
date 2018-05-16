@@ -172,11 +172,11 @@ $('.image_title input').blur(function() {
   }
 });
 
-// image uploader scripts
+
 
 $(document).ready(function () {
     $('.datepicker').datepicker({
-        format: "mm/yyyy",
+        format: "mm-yyyy",
         startView: 1,
         minViewMode: 1,
         language: "ja",

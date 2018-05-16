@@ -73,6 +73,26 @@ class MtbCategoryTableTest extends TestCase
     }
 
     /**
+     * Test getAllCartegoryJob method
+     *
+     * @return void
+     */
+    public function testGetAllCartegoryJob()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test getAllCartegoryJobForMobile method
+     *
+     * @return void
+     */
+    public function testGetAllCartegoryJobForMobile()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
      * Test buildRules method
      *
      * @return void

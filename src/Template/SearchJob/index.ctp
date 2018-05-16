@@ -1,8 +1,3 @@
-<?php
-use Cake\Core\Configure;
-use App\Controller\Component\CommonComponent;
-
-?>
 <link rel="stylesheet" href="css/screen/forsearch.css"/>
 <div class="container" style="margin-top: 70px">
     <div class="row">
@@ -46,19 +41,23 @@ use App\Controller\Component\CommonComponent;
             );
             ?>
 
-            <?=
+            <!--hidden affer seminar-->
+            <div class="dis-none">
+                <?=
                 $this->Form->select(
-            'searchFrom',
-            [1=>$searchjob['search_from_vn'], 2=>$searchjob['search_from_jp']],
-            [
-            'class' => 'form-control white',
-            'empty' => $searchjob['search_from_job'],
-            ]
-            );
-            ?>
+                'searchFrom',
+                [1=>$searchjob['search_from_vn'], 2=>$searchjob['search_from_jp']],
+                [
+                'class' => 'form-control white',
+                'empty' => $searchjob['search_from_job'],
+                ]
+                );
+                ?>
+            </div>
+
 
             <div style="text-align: center;margin-top: -20px">
-                <input type="button" onclick="submitSearch();" class="btn dark-red btn-search" title="Tìm kiếm"
+                <input type="button" onclick="SubmitSearch();" class="btn dark-red btn-search" title="Tìm kiếm"
                        value="<?= $searchjob['search_btn_job'] ?>"
                        name="search"/>
             </div>
@@ -82,7 +81,7 @@ use App\Controller\Component\CommonComponent;
         <div class="col-xs-3 job-unit-height">
             <div class="logo-box">
                 <a href="/jobDetail?job_id=<?= $item['product_id'] ?>" target="_self">
-                    <img class="img-responsive job-logo" src="img/screen_img/logo/logo_company/evolable_logo.png" alt="Facebook"/>
+                    <img class="img-responsive job-logo" src="img/screen_img/logo/logo_company/HpJobLogo.png" alt="Facebook"/>
                 </a>
             </div>
         </div>
@@ -95,11 +94,11 @@ use App\Controller\Component\CommonComponent;
             </a>
             <p class="job-salary-text">
                 <img src="img/screen_img/icon/salary_icon.png" alt=""/>
-                <b><?= $item['salary_min'] ?>JPY〜<?= $item['salary_max'] ?>JPY</b>
+                <b><?= $item['salary_min'] ?><?= $item['currency']==1 ? 'JPY' : 'USD'?>〜<?= $item['salary_max'] ?><?= $item['currency']==1 ? 'JPY' : 'USD'?></b>
             </p>
             <p class="job-place-text">
                 <img src="img/screen_img/icon/job_place.png" alt=""/>
-                <b><?= $item['work_location_vn'] ?></b>
+                <b><?= $item['region']['name'.$textLangCommon] ?></b>
             </p>
         </div>
     </div>
@@ -119,7 +118,7 @@ use App\Controller\Component\CommonComponent;
         <div class="col-xs-3 job-unit-height">
             <div class="logo-box">
                 <a href="/jobDetail?job_id=<?= $item['product_id'] ?>" target="_self">
-                    <img class="img-responsive job-logo" src="img/screen_img/logo/logo_company/evolable_logo.png" alt="Facebook"/>
+                    <img class="img-responsive job-logo" src="img/screen_img/logo/logo_company/HpJobLogo.png" alt="Facebook"/>
                 </a>
             </div>
         </div>
@@ -132,11 +131,11 @@ use App\Controller\Component\CommonComponent;
             </a>
             <p class="job-salary-text">
                 <img src="img/screen_img/icon/salary_icon.png" alt=""/>
-                <b><?= $item['salary_min'] ?>JPY〜<?= $item['salary_max'] ?>JPY</b>
+                <b><?= $item['salary_min'] ?><?= $item['currency']==1 ? 'JPY' : 'USD'?>〜<?= $item['salary_max'] ?><?= $item['currency']==1 ? 'JPY' : 'USD'?></b>
             </p>
             <p class="job-place-text">
                 <img src="img/screen_img/icon/job_place.png" alt=""/>
-                <b><?= $item['work_location_vn'] ?></b>
+                <b><?= $item['region']['name'.$textLangCommon] ?></b>
             </p>
         </div>
     </div>
@@ -149,12 +148,12 @@ use App\Controller\Component\CommonComponent;
         <img class="img-responsive" src="img/screen_img/icon/dotted-line-white-med.png" alt=""/>
     </div>
     <?php foreach ($jobSearchResult as $item): ?>
-    <div class="row rank-job-list">
+    <div class="row rank-job-list lazy-load">
         <!-- logo -->
         <div class="col-xs-3 job-unit-height">
             <div class="logo-box">
                 <a href="/jobDetail?job_id=<?= $item['product_id'] ?>" target="_self">
-                    <img class="img-responsive job-logo" src="img/screen_img/logo/logo_company/evolable_logo.png" alt="Facebook"/>
+                    <img class="img-responsive job-logo" src="img/screen_img/logo/logo_company/HpJobLogo.png" alt="Facebook"/>
                 </a>
             </div>
         </div>
@@ -167,11 +166,11 @@ use App\Controller\Component\CommonComponent;
             </a>
             <p class="job-salary-text">
                 <img src="img/screen_img/icon/salary_icon.png" alt=""/>
-                <b><?= $item['salary_min'] ?>JPY〜<?= $item['salary_max'] ?>JPY</b>
+                <b><?= $item['salary_min'] ?><?= $item['currency']==1 ? 'JPY' : 'USD'?>〜<?= $item['salary_max'] ?><?= $item['currency']==1 ? 'JPY' : 'USD'?></b>
             </p>
             <p class="job-place-text">
                 <img src="img/screen_img/icon/job_place.png" alt=""/>
-                <b><?= $item['work_location_vn'] ?></b>
+                <b><?= $item['region']['name'.$textLangCommon] ?></b>
             </p>
         </div>
     </div>
@@ -179,9 +178,9 @@ use App\Controller\Component\CommonComponent;
     <?php endif; ?>
 </div>
 
-
+<script type="text/javascript" src="js/common/jquery.lazyload.min.js"></script>
 <script>
-    function submitSearch() {
+    function SubmitSearch() {
         var searchKeyword = $('#searchKeyword').val();
         var searchJobType = $('select[name=searchJobType]').val();
         var searchJobCart = $('select[name=searchJobCart]').val();
@@ -198,4 +197,14 @@ use App\Controller\Component\CommonComponent;
         $('#form1').submit();
     }
 </script>
+<script>
+    $(document).ready(function () {
+        $(".lazy-load").lazyload({
+            effect : "fadeIn",
+            threshold: 100,
+            event : "mouseover"
+        });
+    });
+</script>
+
 

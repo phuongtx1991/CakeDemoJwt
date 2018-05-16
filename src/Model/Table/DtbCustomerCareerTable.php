@@ -111,6 +111,21 @@ class DtbCustomerCareerTable extends Table
         }
     }
 
+    public function getMaxId()
+    {
+        try {
+            $result = $this->find()
+                ->select(['id'])
+                ->order(['id' => 'DESC'])
+                ->hydrate(false)
+                ->first();
+            return $result['id'];
+        } catch (Exception $e) {
+            return false;
+            throw $e;
+        }
+    }
+
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.
@@ -120,7 +135,7 @@ class DtbCustomerCareerTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['customer_id'], 'Customers'));
+//        $rules->add($rules->existsIn(['customer_id'], 'Customers'));
 
         return $rules;
     }

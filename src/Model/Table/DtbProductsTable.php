@@ -370,26 +370,6 @@ class DtbProductsTable extends Table
         return $validator;
     }
 
-    /**
-     * get the list five first job
-     * $status = 1 : 人気(hấp dẫn), 2 : 急募(tuyển gấp)
-     * @return array
-     */
-    public function getFiveJobFollowStatus($status)
-    {
-        try {
-            // 他Model情報取得
-            $jobList = $this->find()
-                ->order(['product_id' => 'DESC'])
-                ->where(['del_flg' => 0, 'status' => $status])
-                ->limit(5)
-                ->toArray();
-            return $jobList;
-        } catch (Exception $e) {
-            throw $e;
-        }
-    }
-
 
     /**
      * get the list five first job
@@ -400,10 +380,29 @@ class DtbProductsTable extends Table
     {
         try {
             $jobList = $this->find()
-//                ->select(['product_id','name','name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn','employment_status'])
-                ->where(['product_id' => $id,'del_flg' => 0])
+                ->where(['product_id' => $id, 'del_flg' => 0])
                 ->hydrate(false)
                 ->first();
+            return $jobList;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * get the list five first job
+     *
+     * @return array
+     */
+    public function getFiveJobFollowStatus($listId)
+    {
+        try {
+            $jobList = $this->find()
+                ->select(['product_id', 'region', 'currency', 'name', 'name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn'])
+                ->Where(['OR' => $listId])
+                ->andWhere(['del_flg' => 0])
+                ->hydrate(false)
+                ->toArray();
             return $jobList;
         } catch (Exception $e) {
             throw $e;
@@ -422,14 +421,19 @@ class DtbProductsTable extends Table
             $wheresArray = array();
             $nameJP = array();
             $nameVN = array();
+            $jobDetailVN = array();
+            $jobDetailJP = array();
 
-//            $wheresArray['del_flg'] = 0;
             if (!empty($dataSearch['searchKeyword'])) {
                 $nameVN['name_vn LIKE'] = '%' . $dataSearch['searchKeyword'] . '%';
                 $nameJP['name LIKE'] = '%' . $dataSearch['searchKeyword'] . '%';
+                $jobDetailVN['main_comment_vn LIKE'] = '%' . $dataSearch['searchKeyword'] . '%';
+                $jobDetailJP['main_comment LIKE'] = '%' . $dataSearch['searchKeyword'] . '%';
             } else {
                 $nameVN['name_vn LIKE'] = '%%';
                 $nameJP['name LIKE'] = '%%';
+                $jobDetailVN['main_comment_vn LIKE'] = '%%';
+                $jobDetailJP['main_comment LIKE'] = '%%';
             }
 
             if (!empty($dataSearch['searchJobType'])) {
@@ -443,13 +447,17 @@ class DtbProductsTable extends Table
             if (!empty($dataSearch['searchRegion'])) {
                 $wheresArray['region'] = $dataSearch['searchRegion'];
             }
+
+            $wheresArray['del_flg'] = 0;
+
             $jobList = $this->find()
-                ->select(['product_id','name','name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn'])
+                ->select(['product_id', 'currency', 'region', 'name', 'name_vn', 'salary_min', 'salary_max', 'work_location_vn', 'main_list_comment_vn'])
                 ->order(['product_id' => 'DESC'])
                 ->where($nameVN)
                 ->orWhere($nameJP)
-                ->andWhere( $wheresArray)
-                ->andWhere( ['del_flg' => 0])
+                ->orWhere($jobDetailVN)
+                ->orWhere($jobDetailJP)
+                ->andWhere($wheresArray)
                 ->hydrate(false)
                 ->toArray();
             return $jobList;

@@ -91,6 +91,22 @@ class DtbProductStatusTable extends Table
         }
     }
 
+    public function getFileJobIdWithStatus($status)
+    {
+        try {
+            $result = $this->find()
+                ->select(['product_id'])
+                ->order(['update_date' => 'DESC'])
+                ->where(['product_status_id' => $status,'del_flg' => 0])
+                ->limit(5)
+                ->hydrate(false)
+                ->toArray();
+            return $result;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.

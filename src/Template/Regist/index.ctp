@@ -55,13 +55,15 @@
                 </div>
 
                 <div class="flex-col-c p-t-30 p-b-20">
-                        <span class="txt1 p-b-9">
-                            <?= $regist['label_have_acc'] ?>
-                        </span>
-
-                    <a href="#" class="txt3">
+                    <span class="txt4 p-b-9">
+                        <?= $regist['label_have_acc'] ?>
+                    </span>
+                    <span class="txt3">
                         <?= $regist['label_login'] ?>
-                    </a>
+                        <a href="/login" class="login-btn">
+                            <?= $regist['label_login_btn'] ?>
+                        </a>
+                     </span>
                 </div>
             </form>
             <input hidden id="validate_email_empty" value="<?= $regist['validate_email_empty'] ?>">

@@ -18,6 +18,7 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('object_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('rank') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('mobile_view') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
                 <td><?= $this->Number->format($mtbCategory->id) ?></td>
                 <td><?= $this->Number->format($mtbCategory->object_id) ?></td>
                 <td><?= $this->Number->format($mtbCategory->rank) ?></td>
+                <td><?= $this->Number->format($mtbCategory->mobile_view) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $mtbCategory->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $mtbCategory->id]) ?>

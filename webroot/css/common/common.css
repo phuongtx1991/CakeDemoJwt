@@ -116,8 +116,13 @@ body {
 
 .footer-contact-icon {
     margin: 10px 0 3px;
-    text-align: left;
+    /*text-align: left;*/
 }
+
+.footer-contact-icon i img {
+    max-height: 30px;
+}
+
 
 .footer-contact-relation {
     margin-left: -12px;

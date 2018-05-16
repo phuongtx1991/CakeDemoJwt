@@ -19,6 +19,7 @@
             echo $this->Form->control('name');
             echo $this->Form->control('name_vn');
             echo $this->Form->control('rank');
+            echo $this->Form->control('mobile_view');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

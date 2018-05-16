@@ -28,6 +28,10 @@
             <th scope="row"><?= __('Rank') ?></th>
             <td><?= $this->Number->format($mtbCategory->rank) ?></td>
         </tr>
+        <tr>
+            <th scope="row"><?= __('Mobile View') ?></th>
+            <td><?= $this->Number->format($mtbCategory->mobile_view) ?></td>
+        </tr>
     </table>
     <div class="row">
         <h4><?= __('Name') ?></h4>

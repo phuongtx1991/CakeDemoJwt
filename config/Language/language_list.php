@@ -92,6 +92,7 @@ return [
         ],
         'desired_position_title' => ['vn'=>'Hãy lựa chọn vị trí mong muốn ...','jp'=>'希望ポジションを選択してください'],
         'desired_region_title' => ['vn'=>'Lựa chọn nơi làm việc mong muốn ...','jp'=>'希望勤務地を選択してください'],
+        'desired_job_title' => ['vn'=>'Lựa chọn công việc bạn mong muốn ...','jp'=>'希望仕事を選択してください'],
         // label
         'update_user_info' => ['vn'=>'Cập nhật thông tin cá nhân','jp'=>'個人情報更新'],
         'user_info_step' => ['vn'=>'Điền đầy đủ thông tin và chuyển sang bước tiếp','jp'=>'情報を完成し、次のステップに進む'],
@@ -230,6 +231,7 @@ return [
         'label_sign_up_text' => ['vn'=>'Đăng ký','jp'=>'会員登録をする'],
         'label_have_acc' => ['vn'=>'Bạn đã có tài khoản ?','jp'=>'アカウントがありますか？'],
         'label_login' => ['vn'=>'Đăng nhập','jp'=>'ログイン'],
+        'label_login_btn' => ['vn'=>'Tại đây','jp'=>'こちらへ'],
 
         'placeholder_name01' => ['vn'=>'Tên của bạn','jp'=>'名前'],
         'placeholder_name02' => ['vn'=>'Họ của bạn','jp'=>'性名'],
@@ -251,7 +253,8 @@ return [
         'label_sign_in' => ['vn'=>'Đăng nhập','jp'=>'ログイン'],
         'label_forgot' => ['vn'=>'Quên mật khẩu','jp'=>'パスワードを忘れた方'],
         'label_dont_have_acc' => ['vn'=>'Bạn chưa có tài khoản ?','jp'=>'アカウントがまだありませんか？'],
-        'label_sign_up_now' => ['vn'=>'Đăng ký ngay','jp'=>'会員登録'],
+        'label_sign_up_now' => ['vn'=>'Đăng ký ngay','jp'=>'簡単に会員登録'],
+        'label_sign_up_btn' => ['vn'=>'Tại đây','jp'=>'こちらへ'],
 
         'placeholder_email' => ['vn'=>'Địa chỉ email','jp'=>'メールアドレス'],
         'placeholder_password' => ['vn'=>'Mật khẩu','jp'=>'パスワード'],

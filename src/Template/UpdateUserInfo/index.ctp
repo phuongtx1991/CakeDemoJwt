@@ -126,7 +126,7 @@
                             <input type="radio" name="marital_status" value="1" <?= ($customInfo['marital_status'] == 1)? 'checked' : '' ?>> <?= $updateuserinfo['label_marital_alone'] ?>
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="marital_status" value="2" <?= ($customInfo['marital_status'] == 1)? 'checked' : '' ?>> <?= $updateuserinfo['label_marital_married'] ?>
+                            <input type="radio" name="marital_status" value="2" <?= ($customInfo['marital_status'] == 2)? 'checked' : '' ?>> <?= $updateuserinfo['label_marital_married'] ?>
                         </label>
                     </div>
                     <div class="form-group">
@@ -238,18 +238,20 @@
 
                     <h4><b><?= $updateuserinfo['desired_job'] ?></b><span><?= $updateuserinfo['step'] ?> 3 - 4</span></h4>
                     <div class="form-group">
-                        <label><?= $updateuserinfo['label_desired_job'] ?><span>*</span></label>
+                        <label><?= $updateuserinfo['label_desired_job'] ?>
+                            <!--<span>*</span>-->
+                        </label>
                         <?=
                         $this->Form->select(
                         'desired_work',
                         $cart,
                         [
-                        'class' => 'form-control selectpicker',
+                        'class' => 'form-control selectpicker ',
                         'default' =>  explode(" ",$customInfo['desired_work']),
                         'data-size' => 10,
                         'data-max-options' => 3,
                         'multiple' => true,
-                        'title' => "Lựa chọn công việc bạn mong muốn",
+                        'title' => $updateuserinfo['desired_job_title'],
                         ]
                         )
                         ?>
@@ -337,11 +339,11 @@
                             <div class="input-daterange datepicker">
                                 <div class="form-group">
                                     <label><?= $updateuserinfo['label_start_date'] ?><span>*</span></label>
-                                    <input type="text" name="project_<?= $key + 1 ?>[start_date]" placeholder="" class="form-control border-radius-4 required" value="<?= $item['start_date']->i18nFormat('MM/YYYY') ?>">
+                                    <input type="text" name="project_<?= $key + 1 ?>[start_date]" placeholder="" class="form-control border-radius-4 required" value="<?= $item['start_date']->i18nFormat('MM-YYYY') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label><?= $updateuserinfo['label_end_date'] ?><span>*</span></label>
-                                    <input type="text" name="project_<?= $key + 1 ?>[end_date]" placeholder="" class="form-control border-radius-4 required" value="<?= $item['end_date']->i18nFormat('MM/YYYY') ?>">
+                                    <input type="text" name="project_<?= $key + 1 ?>[end_date]" placeholder="" class="form-control border-radius-4 required" value="<?= $item['end_date']->i18nFormat('MM-YYYY') ?>">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -351,6 +353,36 @@
                             <input type="hidden" name="project_<?= $key + 1 ?>[exp_id]" value="<?= $item['id'] ?>">
                     </div>
                     <?php endforeach; ?>
+                    <?php if(count($customExp) < 2) : ?>
+                        <?php for($i=count($customExp);$i<2;$i++) : ?>
+                            <div class="form-group border-radius-4" style="border: red solid 2px;padding: 2%;">
+                                <label><b><?= $updateuserinfo['label_project'] ?> <?= $i  + 1 ?></b> </label>
+                                <div class="form-group">
+                                    <label><?= $updateuserinfo['label_position'] ?><span>*</span></label>
+                                    <input type="text" name="project_<?= $i + 1 ?>[exp_position]" placeholder="" class="form-control required" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label><?= $updateuserinfo['label_company'] ?><span>*</span></label>
+                                    <input type="text" name="project_<?= $i + 1 ?>[working_company_name]" placeholder="" class="form-control required" value="">
+                                </div>
+                                <div class="input-daterange datepicker">
+                                    <div class="form-group">
+                                        <label><?= $updateuserinfo['label_start_date'] ?><span>*</span></label>
+                                        <input type="text" name="project_<?= $i + 1 ?>[start_date]" placeholder="" class="form-control border-radius-4 required" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><?= $updateuserinfo['label_end_date'] ?><span>*</span></label>
+                                        <input type="text" name="project_<?= $i + 1 ?>[end_date]" placeholder="" class="form-control border-radius-4 required" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label><?= $updateuserinfo['label_Description'] ?></label>
+                                    <textarea cols="10" rows="2" charswidth="23" class="form-control textarea-ver-fix required" name="project_<?= $i + 1 ?>[job_description]"></textarea>
+                                </div>
+                                <input type="hidden" name="project_<?= $i + 1 ?>[exp_id]" value="">
+                            </div>
+                        <?php endfor; ?>
+                    <?php endif; ?>
                     <!--<input type="hidden" name="exp_num" value="<?= count($customExp) ?>">-->
                     <br/>
                     <div class="form-wizard-buttons">

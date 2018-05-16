@@ -130,6 +130,13 @@ iframe {
     text-transform: uppercase;
 }
 
+.txt4 {
+    font-family: Ubuntu-Regular;
+    font-size: 20px;
+    color: #999999;
+    line-height: 1.4;
+}
+
 
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
@@ -287,6 +294,13 @@ iframe {
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
+}
+
+.login-btn {
+    background: rgba(255,66,66,.85);
+    color:white;
+    border-radius: 25px;
+    padding: 5px 5px 5px 5px;
 }
 
 .login100-form-btn:hover {

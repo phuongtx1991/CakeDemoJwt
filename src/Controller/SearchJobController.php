@@ -17,7 +17,7 @@ use Cake\Event\Event;
  */
 class SearchJobController extends AppController
 {
-    public $components = ['User', 'Common'];
+    public $components = ['User', 'Common', 'PageControl'];
 
 
     /**
@@ -28,48 +28,61 @@ class SearchJobController extends AppController
     public function index()
     {
         $jobTbl = TableRegistry::get('DtbProducts');
+
         $jobCartTbl = TableRegistry::get('MtbCategory');
         $RegionTbl = TableRegistry::get('MtbRegion');
         $langguage = $this->request->session()->read('lang') == 'vn' ? '_vn' : '';
         $this->set('textLang', $langguage);
 
-        $jobFastShow = $jobTbl->getFiveJobFollowStatus(2);
+        //search condition area
+
+        $jobFastShow = $this->getListFiveJobFollowStatus(Configure::read('Common.job_status.fast_job'));
         $this->set('jobFast', $jobFastShow);
 
-        $jobAbsShow = $jobTbl->getFiveJobFollowStatus(1);
+        $jobAbsShow = $this->getListFiveJobFollowStatus(Configure::read('Common.job_status.fast_job'));
         $this->set('jobAbs', $jobAbsShow);
 
-        $jobCart = $jobCartTbl->getAllCartegoryJob();
+        $jobCart = $jobCartTbl->getAllCartegoryJobForMobile();
         $jobCartArray = array();
         foreach ($jobCart as $jobItem) {
-            $jobCartArray += array($jobItem['id'] => $jobItem['name'.$langguage]);
+            $jobCartArray += array($jobItem['id'] => $jobItem['name' . $langguage]);
         }
         $this->set('jobCartArray', $jobCartArray);
+
 
         $Region = $RegionTbl->getAllRegion();
         $RegionArray = array();
         foreach ($Region as $RjItem) {
-            $RegionArray += array($RjItem['id'] => $RjItem['name'.$langguage]);
+            $RegionArray += array($RjItem['id'] => $RjItem['name' . $langguage]);
         }
         $this->set('RegionArray', $RegionArray);
+        //end search condition area
 
+        //search event
         if (isset($this->request->query['search'])) {
             $jobSearchResult = $jobTbl->getSearchResult($this->request->query);
+            foreach ($jobSearchResult as $key => $item) {
+                $jobSearchResult[$key]['region'] = $RegionTbl->getRegionById($item['region']);
+            }
             $this->set('jobSearchResult', $jobSearchResult);
             $this->set('search', 1);
             $this->set('searchKeyword', $this->request->query('searchKeyword'));
         }
-
     }
 
-//    public function jsonResponse($responseData = [], $responseStatusCode = 200) {
-//
-//        $this->response->type('json');
-//        debug("dsadsadsadsadsadasdsad");
-//        debug($this->request->data);
-//        $this->response->statusCode($responseStatusCode);
-//        $this->response->body(json_encode($responseData));
-//        $this->response->send();
-//        $this->render(false,false);
-//    }
+    private function getListFiveJobFollowStatus($status)
+    {
+        $jobStatusTbl = TableRegistry::get('DtbProductStatus');
+        $jobTbl = TableRegistry::get('DtbProducts');
+        $RegionTbl = TableRegistry::get('MtbRegion');
+
+        $listJobId = $jobStatusTbl->getFileJobIdWithStatus($status);
+
+        $listJob = $jobTbl->getFiveJobFollowStatus($listJobId);
+        foreach ($listJob as $key => $item) {
+            $listJob[$key]['region'] = $RegionTbl->getRegionById($item['region']);
+        }
+
+        return $listJob;
+    }
 }

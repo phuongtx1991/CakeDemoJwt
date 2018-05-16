@@ -38,13 +38,17 @@
                 </div>
 
                 <div class="flex-col-c p-t-30 p-b-20">
-                        <span class="txt1 p-b-9">
-                            <?= $login['label_dont_have_acc'] ?>
-                        </span>
-
-                    <a href="#" class="txt3">
+                    <span class="fs-35 txt4 p-b-9 ">
+                        <?= $login['label_dont_have_acc'] ?>
+                    </span>
+                    <span class="txt3">
                         <?= $login['label_sign_up_now'] ?>
-                    </a>
+                        <a href="/regist" class="login-btn">
+                            <?= $login['label_sign_up_btn'] ?>
+                        </a>
+                     </span>
+                </div>
+
                 </div>
             </form>
             <input hidden id="validate_email_empty" value="<?= $login['validate_email_empty'] ?>">

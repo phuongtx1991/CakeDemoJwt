@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-4 text-center ">
                             <div class="col-md-12 col-sm-12 m-b-15">
-                                <img src="img/avatar/avatar_1000.jpg" alt="" class="bo-cir height-120">
+                                <img src="img/avatar/avatar_default.png" alt="" class="bo-cir height-120">
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <a href="/updateuserinfo" class="btn btn-danger"><?= $mypage['label_update_cv'] ?></a>

@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $name_vn
  * @property int $rank
+ * @property int $mobile_view
  *
  * @property \App\Model\Entity\Object $object
  */
@@ -31,6 +32,7 @@ class MtbCategory extends Entity
         'name' => true,
         'name_vn' => true,
         'rank' => true,
+        'mobile_view' => true,
         'object' => true
     ];
 }
